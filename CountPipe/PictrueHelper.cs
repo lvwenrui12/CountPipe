@@ -13,8 +13,8 @@ namespace CountPipe
     {
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名字要在 App.config 中能找到
 
-      private static  SharpWindows imgwindow;
-        public static void Tobinimg_inv(Mat inimg, double dvalue, out Mat binimg)
+     
+        public static void Tobinimg_inv(Mat inimg, double dvalue, SharpWindows imgwindow, out Mat binimg)
         {
             binimg = new Mat();
             try

@@ -54,38 +54,6 @@ namespace CountPipe
         {
             try
             {
-                if (rawimg != null)
-                {
-                    Mat binimg;
-                    Tobinimg_inv(rawimg, out binimg);
-                    ////转灰度
-                    //Mat grayimg;
-                    //if (rawimg.Channels() == 3)
-                    //{
-                    //    grayimg = rawimg.CvtColor(ColorConversionCodes.BGR2GRAY);
-
-                    //}
-                    //else
-                    //{
-                    //    grayimg = rawimg.Clone();
-                    //}
-                    //imgwindow.Showimg(grayimg);
-                    ////bin
-                    //double dvalue = 0;
-                    //double.TryParse(textBox_ThreshValue.Text, out dvalue);
-                    //if (dvalue == 0)
-                    //{
-                    //    dvalue = 10;
-                    //}
-
-                    // binimg = grayimg.Threshold(dvalue, 255, ThresholdTypes.Binary);
-
-
-                    //imgwindow.Showimg(binimg);
-                    //grayimg.Dispose();
-                    //binimg.Dispose();
-
-                }
 
                 //if (onecontours.Count == 1)
                 //{
@@ -106,49 +74,6 @@ namespace CountPipe
             }
         }
 
-
-        private void Tobinimg_inv(Mat inimg, out Mat binimg)
-        {
-            binimg = new Mat();
-            try
-            {
-
-                if (inimg != null)
-                {
-                    //转灰度
-                    Mat grayimg;
-                    if (inimg.Channels() == 3)
-                    {
-                        grayimg = inimg.CvtColor(ColorConversionCodes.BGR2GRAY);
-
-                    }
-                    else
-                    {
-                        grayimg = inimg.Clone();
-                    }
-                    imgwindow.Showimg(grayimg);
-                    //bin
-                    double dvalue = 0;
-                    double.TryParse(textBox_ThreshValue.Text, out dvalue);
-                    if (dvalue == 0)
-                    {
-                        dvalue = 10;
-                    }
-
-                    binimg = grayimg.Threshold(dvalue, 255, ThresholdTypes.BinaryInv);
-                    imgwindow.Showimg(binimg);
-                    grayimg.Dispose();
-                    // binimg.Dispose();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        /// <summary>
         /// 通过矩形选择contours
         /// </summary>
         /// <param name="contours"></param>
@@ -240,7 +165,7 @@ namespace CountPipe
                         dvalue = 10;
                     }
 
-                    PictrueHelper.Tobinimg_inv(rawimg, dvalue, out binimg);
+                    PictrueHelper.Tobinimg_inv(rawimg, dvalue, imgwindow,out binimg);
                 }
             }
             catch (Exception ex)
