@@ -14,38 +14,45 @@ namespace CountPipe
     public partial class Form2 : Form
     {
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名
-        Mat rawimg;
-
+        //原始
+        Mat rawImg;
+        //灰度后结果
+        Mat grayImg;
+        //滤波后结果
+        Mat blurImg;
+        //边缘检测
+        Mat edgeImg;
         SharpWindows imgwindow;
+        PictrueHelper pictrueHelper;
 
-      
 
 
         public Form2()
         {
             InitializeComponent();
             imgwindow = new SharpWindows(this.pictBox, "MainUIwindow");
+            pictrueHelper = new PictrueHelper(imgwindow);
         }
 
-   
+
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
             try
             {
-                var filename = PictrueHelper.OpenfileDlg();
+                var filename = pictrueHelper.OpenfileDlg();
                 if (filename != null && filename != "")
                 {
                     Mat img = Cv2.ImRead(filename);
                     imgwindow.Showimg(img);
-                    rawimg = img.Clone();
+                    rawImg = img.Clone();
                     img.Dispose();
                 }
 
             }
             catch (Exception ex)
             {
-                throw (ex);
+                log.Error("btnOpen_Click " + ex.Message);
 
             }
         }
@@ -155,27 +162,96 @@ namespace CountPipe
         {
             try
             {
-                if (rawimg != null)
+                if (rawImg != null)
                 {
-                    Mat binimg;
+                 
                     double dvalue = 0;
-                    double.TryParse(textBox_ThreshValue.Text, out dvalue);
+                    double.TryParse(txtGray.Text, out dvalue);
                     if (dvalue == 0)
                     {
                         dvalue = 10;
                     }
 
-                    PictrueHelper.Tobinimg_inv(rawimg, dvalue, imgwindow,out binimg);
+                    pictrueHelper.Tobinimg_inv(rawImg, dvalue, out grayImg);
                 }
             }
             catch (Exception ex)
             {
-                log.Error("gray fail "+ex.Message);
+                log.Error("gray fail " + ex.Message);
                 throw (ex);
             }
+        }
+
+        private void btnBlur_Click(object sender, EventArgs e)
+        {
+            double length = 0;
+            double.TryParse(txtBlurLeng.Text, out length);
+            if (length == 0)
+            {
+                length = 10;
+            }
+            double width = 0;
+            double.TryParse(txtBlurWidth.Text, out width);
+            if (width == 0)
+            {
+                width = 10;
+            }
+            OpenCvSharp.Size size = new OpenCvSharp.Size(width, length);
+
+            try
+            {
+                if (rawImg != null)
+                {
+                    pictrueHelper.GetBlurImg(rawImg, size,out blurImg);
+                 
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("gray fail " + ex.Message);
+                throw (ex);
+            }
+           
+
+            
+        }
+
+        private void btnEdgeDete_Click(object sender, EventArgs e)
+        {
+            double thresHold1 = 0;
+            double.TryParse(txtEdgeThresHoldOne.Text, out thresHold1);
+            if (thresHold1 == 0)
+            {
+                thresHold1 = 10;
+            }
+            double thresHold2 = 0;
+            double.TryParse(txtEdgeThresHoldTwo.Text, out thresHold2);
+            if (thresHold2 == 0)
+            {
+                thresHold2 = 10;
+            }
+            try
+            {
+                if (rawImg != null)
+                {
+                    pictrueHelper.GetEdgeImg(rawImg, thresHold1, thresHold2, out edgeImg);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("gray fail " + ex.Message);
+                throw (ex);
+            }
+        }
+
+        private void btnContours_Click(object sender, EventArgs e)
+        {
+            OpenCvSharp.Point[][] contours;
+            pictrueHelper.GetContours(edgeImg,out contours);
         }
     }
 
 
-   
+
 }
