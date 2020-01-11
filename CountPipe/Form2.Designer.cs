@@ -45,21 +45,26 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtEdgeThresHoldOne = new System.Windows.Forms.TextBox();
             this.btnContours = new System.Windows.Forms.Button();
+            this.picRaw = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
             this.SuspendLayout();
             // 
             // pictBox
             // 
+            this.pictBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.pictBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictBox.Location = new System.Drawing.Point(32, 33);
             this.pictBox.Name = "pictBox";
             this.pictBox.Size = new System.Drawing.Size(495, 336);
+            this.pictBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictBox.TabIndex = 5;
             this.pictBox.TabStop = false;
             // 
             // btnCount
             // 
             this.btnCount.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCount.Location = new System.Drawing.Point(547, 109);
+            this.btnCount.Location = new System.Drawing.Point(157, 410);
             this.btnCount.Name = "btnCount";
             this.btnCount.Size = new System.Drawing.Size(75, 23);
             this.btnCount.TabIndex = 4;
@@ -71,7 +76,7 @@
             // btnOpen
             // 
             this.btnOpen.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnOpen.Location = new System.Drawing.Point(547, 42);
+            this.btnOpen.Location = new System.Drawing.Point(51, 410);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 3;
@@ -82,7 +87,7 @@
             // 
             // txtGray
             // 
-            this.txtGray.Location = new System.Drawing.Point(601, 160);
+            this.txtGray.Location = new System.Drawing.Point(211, 461);
             this.txtGray.Name = "txtGray";
             this.txtGray.Size = new System.Drawing.Size(88, 21);
             this.txtGray.TabIndex = 6;
@@ -91,7 +96,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(554, 163);
+            this.label1.Location = new System.Drawing.Point(164, 464);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 7;
@@ -100,7 +105,7 @@
             // btnGray
             // 
             this.btnGray.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnGray.Location = new System.Drawing.Point(817, 158);
+            this.btnGray.Location = new System.Drawing.Point(427, 459);
             this.btnGray.Name = "btnGray";
             this.btnGray.Size = new System.Drawing.Size(75, 23);
             this.btnGray.TabIndex = 8;
@@ -112,7 +117,7 @@
             // btnBlur
             // 
             this.btnBlur.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnBlur.Location = new System.Drawing.Point(817, 203);
+            this.btnBlur.Location = new System.Drawing.Point(427, 504);
             this.btnBlur.Name = "btnBlur";
             this.btnBlur.Size = new System.Drawing.Size(75, 23);
             this.btnBlur.TabIndex = 11;
@@ -124,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(554, 208);
+            this.label2.Location = new System.Drawing.Point(164, 509);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 12);
             this.label2.TabIndex = 10;
@@ -132,7 +137,7 @@
             // 
             // txtBlurLeng
             // 
-            this.txtBlurLeng.Location = new System.Drawing.Point(601, 205);
+            this.txtBlurLeng.Location = new System.Drawing.Point(211, 506);
             this.txtBlurLeng.Name = "txtBlurLeng";
             this.txtBlurLeng.Size = new System.Drawing.Size(73, 21);
             this.txtBlurLeng.TabIndex = 9;
@@ -141,7 +146,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(680, 208);
+            this.label3.Location = new System.Drawing.Point(290, 509);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 12);
             this.label3.TabIndex = 12;
@@ -149,7 +154,7 @@
             // 
             // txtBlurWidth
             // 
-            this.txtBlurWidth.Location = new System.Drawing.Point(727, 205);
+            this.txtBlurWidth.Location = new System.Drawing.Point(337, 506);
             this.txtBlurWidth.Name = "txtBlurWidth";
             this.txtBlurWidth.Size = new System.Drawing.Size(73, 21);
             this.txtBlurWidth.TabIndex = 13;
@@ -157,7 +162,7 @@
             // 
             // txtEdgeThresHoldTwo
             // 
-            this.txtEdgeThresHoldTwo.Location = new System.Drawing.Point(727, 254);
+            this.txtEdgeThresHoldTwo.Location = new System.Drawing.Point(337, 555);
             this.txtEdgeThresHoldTwo.Name = "txtEdgeThresHoldTwo";
             this.txtEdgeThresHoldTwo.Size = new System.Drawing.Size(73, 21);
             this.txtEdgeThresHoldTwo.TabIndex = 18;
@@ -166,7 +171,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(680, 257);
+            this.label4.Location = new System.Drawing.Point(290, 558);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 17;
@@ -175,7 +180,7 @@
             // btnEdgeDete
             // 
             this.btnEdgeDete.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnEdgeDete.Location = new System.Drawing.Point(817, 252);
+            this.btnEdgeDete.Location = new System.Drawing.Point(427, 553);
             this.btnEdgeDete.Name = "btnEdgeDete";
             this.btnEdgeDete.Size = new System.Drawing.Size(75, 23);
             this.btnEdgeDete.TabIndex = 16;
@@ -187,7 +192,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(554, 257);
+            this.label5.Location = new System.Drawing.Point(164, 558);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 15;
@@ -195,7 +200,7 @@
             // 
             // txtEdgeThresHoldOne
             // 
-            this.txtEdgeThresHoldOne.Location = new System.Drawing.Point(601, 254);
+            this.txtEdgeThresHoldOne.Location = new System.Drawing.Point(211, 555);
             this.txtEdgeThresHoldOne.Name = "txtEdgeThresHoldOne";
             this.txtEdgeThresHoldOne.Size = new System.Drawing.Size(73, 21);
             this.txtEdgeThresHoldOne.TabIndex = 14;
@@ -204,7 +209,7 @@
             // btnContours
             // 
             this.btnContours.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnContours.Location = new System.Drawing.Point(898, 252);
+            this.btnContours.Location = new System.Drawing.Point(508, 553);
             this.btnContours.Name = "btnContours";
             this.btnContours.Size = new System.Drawing.Size(75, 23);
             this.btnContours.TabIndex = 19;
@@ -213,11 +218,23 @@
             this.btnContours.UseVisualStyleBackColor = true;
             this.btnContours.Click += new System.EventHandler(this.btnContours_Click);
             // 
+            // picRaw
+            // 
+            this.picRaw.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.picRaw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picRaw.Location = new System.Drawing.Point(576, 33);
+            this.picRaw.Name = "picRaw";
+            this.picRaw.Size = new System.Drawing.Size(495, 336);
+            this.picRaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRaw.TabIndex = 20;
+            this.picRaw.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1105, 449);
+            this.ClientSize = new System.Drawing.Size(1219, 661);
+            this.Controls.Add(this.picRaw);
             this.Controls.Add(this.btnContours);
             this.Controls.Add(this.txtEdgeThresHoldTwo);
             this.Controls.Add(this.label4);
@@ -238,6 +255,7 @@
             this.Name = "Form2";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRaw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +280,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEdgeThresHoldOne;
         private System.Windows.Forms.Button btnContours;
+        private System.Windows.Forms.PictureBox picRaw;
     }
 }

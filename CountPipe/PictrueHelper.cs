@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 using OpenCvSharp;
 using System.Windows.Forms;
 
+using System.IO;
+
 namespace CountPipe
 {
     public class PictrueHelper
     {
-        SharpWindows imgwindow;
+        PictureBox pictureBox;
         Mat rawImg;
-        public PictrueHelper(SharpWindows imgwindow)
+        public PictrueHelper(PictureBox pictureBox)
         {
-            this.imgwindow = imgwindow;
+            this.pictureBox = pictureBox;
         }
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名字要在 App.config 中能找到
 
@@ -43,7 +45,7 @@ namespace CountPipe
                     {
                         grayimg = inimg.Clone();
                     }
-                    imgwindow.Showimg(grayimg);
+                 
                     //bin
 
                     if (dvalue == 0)
@@ -51,7 +53,8 @@ namespace CountPipe
                         dvalue = 10;
                     }
                     binimg = grayimg.Threshold(dvalue, 255, ThresholdTypes.BinaryInv);
-                    imgwindow.Showimg(binimg);
+                    showPic(binimg);
+                  
                     grayimg.Dispose();
                     // binimg.Dispose();
                 }
@@ -102,7 +105,8 @@ namespace CountPipe
             {
 
                 Cv2.Blur(initImg, blurImg, size);
-                imgwindow.Showimg(blurImg);
+                showPic(blurImg);
+                
                
             }
             catch (Exception ex)
@@ -127,7 +131,8 @@ namespace CountPipe
             {
 
                 Cv2.Canny(initImg, cannyImage, threshold1, threshold2);
-                imgwindow.Showimg(cannyImage);
+                showPic(cannyImage);
+             
 
             }
             catch (Exception ex)
@@ -138,6 +143,12 @@ namespace CountPipe
 
 
         }
+
+        /// <summary>
+        /// 获得轮廓 将结果画出并返回结果
+        /// </summary>
+        /// <param name="cannyImage"></param>
+        /// <param name="contours"></param>
 
         public void GetContours(Mat cannyImage,  out  Point[][] contours)
         {
@@ -158,8 +169,8 @@ namespace CountPipe
                     Cv2.DrawContours(dst_Image, contours, i, color, 2, LineTypes.Link8, hierarchly);
                 }
 
-               
-                imgwindow.Showimg(dst_Image);
+                showPic(dst_Image);
+            
 
             }
             catch (Exception ex)
@@ -168,7 +179,53 @@ namespace CountPipe
                 log.Error("GetEdgeImg fail " + ex.Message);
             }
 
-
+             
         }
+
+        /// <summary>
+        /// 通过矩形选择contours
+        /// </summary>
+        /// <param name="contours"></param>
+        /// <param name="Minvaluelow"></param>
+        /// <param name="Minvalueup"></param>
+        /// <param name="Maxvaluelow"></param>
+        /// <param name="Maxvalueup"></param>
+        /// <returns></returns>
+        public List<OpenCvSharp.Point[]> SelectContoursByRect(Mat binimg, double Minvaluelow, double Minvalueup, double Maxvaluelow, double Maxvalueup)
+        {
+            OpenCvSharp.Point[][] contours;
+            HierarchyIndex[] hierarchy;
+            Cv2.FindContours(binimg, out contours, out hierarchy, RetrievalModes.CComp, ContourApproximationModes.ApproxSimple);
+            List<OpenCvSharp.Point[]> Resultcontours = new List<OpenCvSharp.Point[]>();
+            int L = contours.Length;
+            for (int i = 0; i < L; i++)
+            {
+                Rect recttemp = Cv2.BoundingRect(contours[i]);
+                double Hmin, Wmax;
+                Hmin = Math.Min(recttemp.Width, recttemp.Height);
+                Wmax = Math.Max(recttemp.Width, recttemp.Height);
+                if (Hmin > Minvaluelow && Hmin < Minvalueup && Wmax > Maxvaluelow && Wmax < Maxvalueup)
+                {
+                    //满足指定要求的contours
+                    Resultcontours.Add(contours[i]);
+                }
+            }
+            return Resultcontours;
+        }
+
+        public System.Drawing.Bitmap MatToBitmap(Mat image)
+        {
+
+            System.Drawing.Bitmap bitmap = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(image);
+           
+            return bitmap;
+        }
+
+        public void showPic(Mat mat)
+        {
+            System.Drawing.Bitmap img = MatToBitmap(mat);
+            this.pictureBox.Image = img;
+        }
+
     }
 }

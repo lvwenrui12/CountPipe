@@ -22,7 +22,7 @@ namespace CountPipe
         Mat blurImg;
         //边缘检测
         Mat edgeImg;
-        SharpWindows imgwindow;
+      
         PictrueHelper pictrueHelper;
 
 
@@ -30,8 +30,8 @@ namespace CountPipe
         public Form2()
         {
             InitializeComponent();
-            imgwindow = new SharpWindows(this.pictBox, "MainUIwindow");
-            pictrueHelper = new PictrueHelper(imgwindow);
+          
+            pictrueHelper = new PictrueHelper(this.pictBox);
         }
 
 
@@ -43,10 +43,12 @@ namespace CountPipe
                 var filename = pictrueHelper.OpenfileDlg();
                 if (filename != null && filename != "")
                 {
+                    picRaw.Load(filename);
+                   
                     Mat img = Cv2.ImRead(filename);
-                    imgwindow.Showimg(img);
-                    rawImg = img.Clone();
-                    img.Dispose();
+                     rawImg = img.Clone();
+                    pictrueHelper.showPic(img);
+
                 }
 
             }
@@ -61,18 +63,47 @@ namespace CountPipe
         {
             try
             {
+                //灰度
+                if (rawImg != null)
+                {
 
-                //if (onecontours.Count == 1)
-                //{
-                //    Point2f cp;
-                //    float r;
-                //    Cv2.MinEnclosingCircle(onecontours[0], out cp, out r);
-                //    //
-                //    Mat backimg = img.Clone();
-                //    Cv2.Circle(backimg, new OpenCvSharp.Point(cp.X, cp.Y), (int)r, Scalar.Red);
-                //    Imgwindow.Showimg(backimg);
-                //    backimg.Dispose();
-                //}
+                    double dvalue = 0;
+                    double.TryParse(txtGray.Text, out dvalue);
+                    if (dvalue == 0)
+                    {
+                        dvalue = 10;
+                    }
+
+                    pictrueHelper.Tobinimg_inv(rawImg, dvalue, out grayImg);
+                }
+
+                //滤波
+
+                double length = 0;
+                double.TryParse(txtBlurLeng.Text, out length);
+                if (length == 0)
+                {
+                    length = 10;
+                }
+                double width = 0;
+                double.TryParse(txtBlurWidth.Text, out width);
+                if (width == 0)
+                {
+                    width = 10;
+                }
+
+                OpenCvSharp.Size size = new OpenCvSharp.Size(width, length);
+                if (grayImg != null)
+                {
+                    pictrueHelper.GetBlurImg(grayImg, size, out blurImg);
+
+                }
+
+
+
+
+
+
 
             }
             catch (Exception ex)
