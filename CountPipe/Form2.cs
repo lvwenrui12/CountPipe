@@ -15,15 +15,15 @@ namespace CountPipe
     {
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名
         //原始
-        Mat rawImg;
+       public Mat rawImg;
         //灰度后结果
-        Mat grayImg;
+        public Mat grayImg;
         //滤波后结果
-        Mat blurImg;
+        public Mat blurImg;
         //边缘检测
-        Mat edgeImg;
-      
-        PictrueHelper pictrueHelper;
+        public Mat edgeImg;
+
+        public PictrueHelper pictrueHelper;
 
 
 
@@ -31,7 +31,8 @@ namespace CountPipe
         {
             InitializeComponent();
           
-            pictrueHelper = new PictrueHelper(this.pictBox);
+            pictrueHelper = new PictrueHelper();
+            pictrueHelper.pictureBox = this.pictBox;
         }
 
 
@@ -189,30 +190,6 @@ namespace CountPipe
 
         }
 
-        private void btnGray_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (rawImg != null)
-                {
-                 
-                    double dvalue = 0;
-                    double.TryParse(txtGray.Text, out dvalue);
-                    if (dvalue == 0)
-                    {
-                        dvalue = 10;
-                    }
-
-                    pictrueHelper.Tobinimg_inv(rawImg, dvalue, out grayImg);
-                }
-            }
-            catch (Exception ex)
-            {
-                log.Error("gray fail " + ex.Message);
-                throw (ex);
-            }
-        }
-
         private void btnBlur_Click(object sender, EventArgs e)
         {
             double length = 0;
@@ -281,6 +258,19 @@ namespace CountPipe
             OpenCvSharp.Point[][] contours;
             pictrueHelper.GetContours(edgeImg,out contours);
         }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Text == "灰度")
+            {
+                GrapFrm grapFrm = new GrapFrm(this);
+                grapFrm.Show();
+                this.Enabled = false;
+               
+            }
+        }
+
+      
     }
 
 

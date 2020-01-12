@@ -28,12 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("灰度");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("高斯");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("中值");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("滤波", new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14});
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("腐蚀");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("膨胀");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("开");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("闭");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19});
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("candy");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode21});
             this.pictBox = new System.Windows.Forms.PictureBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
-            this.txtGray = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnGray = new System.Windows.Forms.Button();
             this.btnBlur = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBlurLeng = new System.Windows.Forms.TextBox();
@@ -46,15 +62,24 @@
             this.txtEdgeThresHoldOne = new System.Windows.Forms.TextBox();
             this.btnContours = new System.Windows.Forms.Button();
             this.picRaw = new System.Windows.Forms.PictureBox();
+            this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtGray = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetOperatorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictBox
             // 
             this.pictBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pictBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictBox.Location = new System.Drawing.Point(32, 33);
+            this.pictBox.Location = new System.Drawing.Point(157, 33);
             this.pictBox.Name = "pictBox";
             this.pictBox.Size = new System.Drawing.Size(495, 336);
             this.pictBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -76,7 +101,7 @@
             // btnOpen
             // 
             this.btnOpen.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnOpen.Location = new System.Drawing.Point(51, 410);
+            this.btnOpen.Location = new System.Drawing.Point(157, 381);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 3;
@@ -84,35 +109,6 @@
             this.btnOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
-            // 
-            // txtGray
-            // 
-            this.txtGray.Location = new System.Drawing.Point(211, 461);
-            this.txtGray.Name = "txtGray";
-            this.txtGray.Size = new System.Drawing.Size(88, 21);
-            this.txtGray.TabIndex = 6;
-            this.txtGray.Text = "80";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 464);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "灰度值";
-            // 
-            // btnGray
-            // 
-            this.btnGray.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnGray.Location = new System.Drawing.Point(427, 459);
-            this.btnGray.Name = "btnGray";
-            this.btnGray.Size = new System.Drawing.Size(75, 23);
-            this.btnGray.TabIndex = 8;
-            this.btnGray.Text = "灰度";
-            this.btnGray.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnGray.UseVisualStyleBackColor = true;
-            this.btnGray.Click += new System.EventHandler(this.btnGray_Click);
             // 
             // btnBlur
             // 
@@ -222,18 +218,71 @@
             // 
             this.picRaw.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.picRaw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picRaw.Location = new System.Drawing.Point(576, 33);
+            this.picRaw.Location = new System.Drawing.Point(683, 33);
             this.picRaw.Name = "picRaw";
             this.picRaw.Size = new System.Drawing.Size(495, 336);
             this.picRaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRaw.TabIndex = 20;
             this.picRaw.TabStop = false;
             // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 33);
+            this.treeView1.Name = "treeView1";
+            treeNode12.Name = "节点0";
+            treeNode12.Text = "灰度";
+            treeNode13.Name = "节点2";
+            treeNode13.Text = "高斯";
+            treeNode14.Name = "节点4";
+            treeNode14.Text = "中值";
+            treeNode15.Name = "节点1";
+            treeNode15.Text = "滤波";
+            treeNode16.Name = "节点5";
+            treeNode16.Text = "腐蚀";
+            treeNode17.Name = "节点6";
+            treeNode17.Text = "膨胀";
+            treeNode18.Name = "节点7";
+            treeNode18.Text = "开";
+            treeNode19.Name = "节点8";
+            treeNode19.Text = "闭";
+            treeNode20.Name = "节点3";
+            treeNode20.Text = "形态";
+            treeNode21.Name = "节点10";
+            treeNode21.Text = "candy";
+            treeNode22.Name = "节点9";
+            treeNode22.Text = "边缘检测";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode12,
+            treeNode15,
+            treeNode20,
+            treeNode22});
+            this.treeView1.Size = new System.Drawing.Size(121, 488);
+            this.treeView1.TabIndex = 21;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(164, 464);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "灰度值";
+            // 
+            // txtGray
+            // 
+            this.txtGray.Location = new System.Drawing.Point(211, 461);
+            this.txtGray.Name = "txtGray";
+            this.txtGray.Size = new System.Drawing.Size(88, 21);
+            this.txtGray.TabIndex = 6;
+            this.txtGray.Text = "80";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 661);
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.picRaw);
             this.Controls.Add(this.btnContours);
             this.Controls.Add(this.txtEdgeThresHoldTwo);
@@ -246,7 +295,6 @@
             this.Controls.Add(this.btnBlur);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBlurLeng);
-            this.Controls.Add(this.btnGray);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtGray);
             this.Controls.Add(this.pictBox);
@@ -256,6 +304,9 @@
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSetOperatorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,9 +317,6 @@
         private System.Windows.Forms.PictureBox pictBox;
         private System.Windows.Forms.Button btnCount;
         private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.TextBox txtGray;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnGray;
         private System.Windows.Forms.Button btnBlur;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBlurLeng;
@@ -281,5 +329,12 @@
         private System.Windows.Forms.TextBox txtEdgeThresHoldOne;
         private System.Windows.Forms.Button btnContours;
         private System.Windows.Forms.PictureBox picRaw;
+        private System.Windows.Forms.BindingSource dataSetOperatorBindingSource;
+     
+        private System.Windows.Forms.BindingSource dataTable1BindingSource1;
+        private System.Windows.Forms.BindingSource dataTable1BindingSource;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtGray;
     }
 }
