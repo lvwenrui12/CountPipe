@@ -25,8 +25,6 @@ namespace CountPipe
 
         public PictrueHelper pictrueHelper;
 
-
-
         public Form2()
         {
             InitializeComponent();
@@ -34,8 +32,6 @@ namespace CountPipe
             pictrueHelper = new PictrueHelper();
             pictrueHelper.pictureBox = this.pictBox;
         }
-
-
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
@@ -267,6 +263,14 @@ namespace CountPipe
                 grapFrm.Show();
                 this.Enabled = false;
                
+            }
+
+            if (e.Node.Text == "高斯模糊")
+            {
+                GuaseBlurFrm guaseFrm = new GuaseBlurFrm(this);
+                guaseFrm.Show();
+                this.Enabled = false;
+
             }
         }
 

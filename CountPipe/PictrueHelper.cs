@@ -143,6 +143,28 @@ namespace CountPipe
 
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="initimg"></param>
+        /// <param name="size"></param>
+        /// <param name="sigamaX">标准差X,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
+        /// <param name="sigmaY">标准差Y,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
+        /// <param name="guaseImg"></param>
+
+        public void GuaseBlurImg(Mat initimg, int size,double sigamaX, double sigmaY,out Mat guaseImg)
+        {
+            guaseImg = new Mat();
+            try
+            {
+                Cv2.GaussianBlur(initimg, guaseImg, new Size(size, size), sigamaX, sigmaY);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         /// <summary>
         /// 获得轮廓 将结果画出并返回结果
