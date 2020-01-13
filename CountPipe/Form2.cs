@@ -76,25 +76,25 @@ namespace CountPipe
 
                 //滤波
 
-                double length = 0;
-                double.TryParse(txtBlurLeng.Text, out length);
-                if (length == 0)
-                {
-                    length = 10;
-                }
-                double width = 0;
-                double.TryParse(txtBlurWidth.Text, out width);
-                if (width == 0)
-                {
-                    width = 10;
-                }
+                //double length = 0;
+                //double.TryParse(txtBlurLeng.Text, out length);
+                //if (length == 0)
+                //{
+                //    length = 10;
+                //}
+                //double width = 0;
+                //double.TryParse(txtBlurWidth.Text, out width);
+                //if (width == 0)
+                //{
+                //    width = 10;
+                //}
 
-                OpenCvSharp.Size size = new OpenCvSharp.Size(width, length);
-                if (grayImg != null)
-                {
-                    pictrueHelper.GetBlurImg(grayImg, size, out blurImg);
+                //OpenCvSharp.Size size = new OpenCvSharp.Size(width, length);
+                //if (grayImg != null)
+                //{
+                //    pictrueHelper.GetBlurImg(grayImg, size, out blurImg);
 
-                }
+                //}
 
 
 
@@ -186,68 +186,9 @@ namespace CountPipe
 
         }
 
-        private void btnBlur_Click(object sender, EventArgs e)
-        {
-            double length = 0;
-            double.TryParse(txtBlurLeng.Text, out length);
-            if (length == 0)
-            {
-                length = 10;
-            }
-            double width = 0;
-            double.TryParse(txtBlurWidth.Text, out width);
-            if (width == 0)
-            {
-                width = 10;
-            }
-            OpenCvSharp.Size size = new OpenCvSharp.Size(width, length);
+     
 
-            try
-            {
-                if (rawImg != null)
-                {
-                    pictrueHelper.GetBlurImg(rawImg, size,out blurImg);
-                 
-                }
-            }
-            catch (Exception ex)
-            {
-                log.Error("gray fail " + ex.Message);
-                throw (ex);
-            }
-           
-
-            
-        }
-
-        private void btnEdgeDete_Click(object sender, EventArgs e)
-        {
-            double thresHold1 = 0;
-            double.TryParse(txtEdgeThresHoldOne.Text, out thresHold1);
-            if (thresHold1 == 0)
-            {
-                thresHold1 = 10;
-            }
-            double thresHold2 = 0;
-            double.TryParse(txtEdgeThresHoldTwo.Text, out thresHold2);
-            if (thresHold2 == 0)
-            {
-                thresHold2 = 10;
-            }
-            try
-            {
-                if (rawImg != null)
-                {
-                    pictrueHelper.GetEdgeImg(rawImg, thresHold1, thresHold2, out edgeImg);
-
-                }
-            }
-            catch (Exception ex)
-            {
-                log.Error("gray fail " + ex.Message);
-                throw (ex);
-            }
-        }
+ 
 
         private void btnContours_Click(object sender, EventArgs e)
         {
@@ -343,11 +284,21 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "Canny")
+            {
+                CannyFrm blackHatFrm = new CannyFrm(this);
+                blackHatFrm.Show();
+                this.Enabled = false;
+
+            }
 
 
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 
 

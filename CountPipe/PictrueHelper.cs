@@ -92,57 +92,8 @@ namespace CountPipe
             return path;
         }
 
-        /// <summary>
-        /// 滤波
-        /// </summary>
-        /// <param name="initImg">输入的图像</param>
-        /// <param name="size">工具的长宽</param>
-        /// <param name="blurImg">输出</param>
-        public void GetBlurImg(Mat initImg, Size size, out Mat blurImg)
-        {
-            blurImg = new Mat();
-            try
-            {
-
-                Cv2.Blur(initImg, blurImg, size);
-                showPic(blurImg);
-                
-               
-            }
-            catch (Exception ex)
-            {
-
-                log.Error("GetBlurImg " + ex.Message);
-            }
 
 
-        }
-        /// <summary>
-        /// 边缘检测
-        /// </summary>
-        /// <param name="initImg"></param>
-        /// <param name="threshold1">阈值</param>
-        /// <param name="threshold2">阈值</param>
-        /// <param name="cannyImage"></param>
-        public void GetEdgeImg(Mat initImg, double threshold1, double threshold2, out Mat cannyImage)
-        {
-             cannyImage = new Mat();
-            try
-            {
-
-                Cv2.Canny(initImg, cannyImage, threshold1, threshold2);
-                showPic(cannyImage);
-             
-
-            }
-            catch (Exception ex)
-            {
-
-                log.Error("GetEdgeImg fail " + ex.Message);
-            }
-
-
-        }
 
 
         /// <summary>
@@ -231,6 +182,8 @@ namespace CountPipe
 
 
         #region 滤波
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -400,6 +353,7 @@ namespace CountPipe
         /// 闭，先膨胀后腐蚀，可以填充图像的噪点
         /// 形态学梯度,膨胀减去腐蚀，又称基本梯度,获取轮廓
         /// 形态学顶帽：是原图像与开操作之间的差值图像
+        /// 形态学黑帽：闭操作图像与源图像的差值图像
         /// </summary>
         /// <param name="src"></param>
         /// <param name="element">结构元素 ，一定要是奇数</param>
@@ -427,6 +381,37 @@ namespace CountPipe
 
         #endregion
 
+        #region 边缘检测
+
+        /// <summary>
+        /// 边缘检测
+        /// </summary>
+        /// <param name="initImg"></param>
+        /// <param name="threshold1">阈值</param>
+        /// <param name="threshold2">阈值</param>
+        /// <param name="cannyImage"></param>
+        public void CannyImg(Mat initImg, double threshold1, double threshold2, out Mat cannyImage)
+        {
+            cannyImage = new Mat();
+            try
+            {
+
+                Cv2.Canny(initImg, cannyImage, threshold1, threshold2);
+                showPic(cannyImage);
+
+
+            }
+            catch (Exception ex)
+            {
+
+                log.Error("GetEdgeImg fail " + ex.Message);
+            }
+
+
+        }
+
+
+        #endregion
 
     }
 }
