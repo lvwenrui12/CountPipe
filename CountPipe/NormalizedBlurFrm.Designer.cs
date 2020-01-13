@@ -1,6 +1,6 @@
 ﻿namespace CountPipe
 {
-    partial class BilateralBlurFrm
+    partial class NormalizedBlurFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,31 +29,29 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDiameter = new System.Windows.Forms.TextBox();
+            this.txtWidth = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtSigmaColor = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtSigmaSpace = new System.Windows.Forms.TextBox();
+            this.txtHeight = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 77);
+            this.label1.Location = new System.Drawing.Point(49, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 9;
-            this.label1.Text = "半径";
+            this.label1.Text = "工具宽(奇数)";
             // 
-            // txtDiameter
+            // txtWidth
             // 
-            this.txtDiameter.Location = new System.Drawing.Point(150, 77);
-            this.txtDiameter.Name = "txtDiameter";
-            this.txtDiameter.Size = new System.Drawing.Size(88, 21);
-            this.txtDiameter.TabIndex = 8;
-            this.txtDiameter.Text = "3";
+            this.txtWidth.Location = new System.Drawing.Point(150, 77);
+            this.txtWidth.Name = "txtWidth";
+            this.txtWidth.Size = new System.Drawing.Size(88, 21);
+            this.txtWidth.TabIndex = 8;
+            this.txtWidth.Text = "3";
             // 
             // btnCancel
             // 
@@ -78,55 +76,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 118);
+            this.label2.Location = new System.Drawing.Point(49, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 12);
             this.label2.TabIndex = 13;
-            this.label2.Text = "像素颜色差值";
+            this.label2.Text = "工具高(奇数)";
             // 
-            // txtSigmaColor
+            // txtHeight
             // 
-            this.txtSigmaColor.Location = new System.Drawing.Point(150, 115);
-            this.txtSigmaColor.Name = "txtSigmaColor";
-            this.txtSigmaColor.Size = new System.Drawing.Size(88, 21);
-            this.txtSigmaColor.TabIndex = 12;
-            this.txtSigmaColor.Text = "3";
+            this.txtHeight.Location = new System.Drawing.Point(150, 109);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(88, 21);
+            this.txtHeight.TabIndex = 12;
+            this.txtHeight.Text = "3";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(79, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "像素空间";
-            // 
-            // txtSigmaSpace
-            // 
-            this.txtSigmaSpace.Location = new System.Drawing.Point(150, 147);
-            this.txtSigmaSpace.Name = "txtSigmaSpace";
-            this.txtSigmaSpace.Size = new System.Drawing.Size(88, 21);
-            this.txtSigmaSpace.TabIndex = 14;
-            this.txtSigmaSpace.Text = "3";
-            // 
-            // BilateralBlurFrm
+            // NormalizedBlurFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 240);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtSigmaSpace);
+            this.ClientSize = new System.Drawing.Size(447, 250);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtSigmaColor);
+            this.Controls.Add(this.txtHeight);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtDiameter);
-            this.Name = "BilateralBlurFrm";
+            this.Controls.Add(this.txtWidth);
+            this.Name = "NormalizedBlurFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "高斯双边滤波参数设置";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BilateralBlurFrm_FormClosed);
-           
+            this.Text = "归一化模糊参数设置";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NormalizedBlurFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,12 +113,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDiameter;
+        private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtSigmaColor;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtSigmaSpace;
+        private System.Windows.Forms.TextBox txtHeight;
     }
 }

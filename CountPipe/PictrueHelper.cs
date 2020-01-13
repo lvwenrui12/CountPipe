@@ -159,10 +159,10 @@ namespace CountPipe
             {
                 Cv2.GaussianBlur(initimg, guaseImg, new Size(size, size), sigamaX, sigmaY);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw (ex);
             }
         }
 
@@ -274,6 +274,7 @@ namespace CountPipe
             {
 
                 log.Error("GetBlurImg fail " + ex.Message);
+                throw (ex);
             }
 
 
@@ -305,6 +306,7 @@ namespace CountPipe
             {
 
                 log.Error("BlurImg fail " + ex.Message);
+                throw (ex);
             }
 
 
@@ -329,6 +331,7 @@ namespace CountPipe
             {
 
                 log.Error("BilateralBlurImg fail " + ex.Message);
+                throw (ex);
             }
         }
 

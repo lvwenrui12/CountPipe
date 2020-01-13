@@ -286,6 +286,13 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "归一化滤波")
+            {
+                NormalizedBlurFrm normalizedFrm = new NormalizedBlurFrm(this);
+                normalizedFrm.Show();
+                this.Enabled = false;
+
+            }
 
         }
 

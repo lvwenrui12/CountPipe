@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace CountPipe
 {
-    public partial class BilateralBlurFrm: Form
+    public partial class NormalizedBlurFrm : Form
     {
        
 
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); 
         Form2 parentForm;
         private PictrueHelper pictrueHelper=new PictrueHelper();
-        public BilateralBlurFrm(Form2 form)
+        public NormalizedBlurFrm(Form2 form)
         {
             InitializeComponent();
             this.parentForm = form;
@@ -37,32 +37,31 @@ namespace CountPipe
                 if (parentForm.rawImg != null)
                 {
 
-                   
-                    int d;
-                    double sigmaColor;
-                    double sigmaSpace;
-                
-                    int.TryParse(txtDiameter.Text, out d);
-                    double.TryParse(txtSigmaColor.Text, out sigmaColor);
-                    double.TryParse(txtSigmaSpace.Text, out sigmaSpace);
-                   
-                    Mat bilateralBlurImg;
-                    pictrueHelper.BilateralBlurImg(parentForm.rawImg, d, sigmaColor, sigmaSpace, out bilateralBlurImg);
-                    parentForm.pictrueHelper.showPic(bilateralBlurImg);
+                    int width = 0;
+                 
+                    int.TryParse(txtWidth.Text, out width);
+
+                    int height;
+                    int.TryParse(txtHeight.Text, out height);
+
+                    Mat blurImg;
+                    pictrueHelper.BlurImg(parentForm.rawImg, width,height,-1,-1, out blurImg);
+                    parentForm.pictrueHelper.showPic(blurImg);
                    
                     this.Close();
                 }
             }
             catch (Exception ex)
             {
-                log.Error("BilateralBlurImg fail " + ex.Message);
-               
+                log.Error("BlurImg fail " + ex.Message);
+                MessageBox.Show(ex.Message);
+                
             }
 
         }
 
-      
-        private void BilateralBlurFrm_FormClosed(object sender, FormClosedEventArgs e)
+        
+        private void NormalizedBlurFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Enabled = true;
         }

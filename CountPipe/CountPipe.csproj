@@ -96,6 +96,12 @@
     <Compile Include="BilateralBlurFrm.Designer.cs">
       <DependentUpon>BilateralBlurFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NormalizedBlurFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NormalizedBlurFrm.Designer.cs">
+      <DependentUpon>NormalizedBlurFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MedianBlurFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BilateralBlurFrm.resx">
       <DependentUpon>BilateralBlurFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NormalizedBlurFrm.resx">
+      <DependentUpon>NormalizedBlurFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MedianBlurFrm.resx">
       <DependentUpon>MedianBlurFrm.cs</DependentUpon>
