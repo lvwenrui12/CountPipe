@@ -394,6 +394,35 @@ namespace CountPipe
             }
 
         }
+        /// <summary>
+        /// 形态学操作 
+        /// 开， 先腐蚀后膨胀，可以去掉小的对象;
+        /// 闭，先膨胀后腐蚀，可以填充图像的噪点
+        /// 形态学梯度,膨胀减去腐蚀，又称基本梯度,获取轮廓
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="element">结构元素 ，一定要是奇数</param>
+        /// <param name="erodeImg"></param>
+        /// <param name="anchor">锚点位置，默认是null</param>
+        /// <param name="borderValue"></param>
+        /// <param name="borderType"></param>
+        /// <param name="iterations">应用侵蚀的次数。[默认情况下这是1]</param>
+
+        public void MorphologyEx(Mat src, InputArray element, MorphTypes type, out Mat erodeImg, Point? anchor = null, Scalar? borderValue = null, BorderTypes borderType = BorderTypes.Constant, int iterations = 1)
+        {
+            try
+            {
+                erodeImg = new Mat();
+
+                Cv2.MorphologyEx(src, erodeImg, type, element, anchor, iterations, borderType);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
 
         #endregion
 

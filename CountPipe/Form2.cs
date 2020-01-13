@@ -307,6 +307,28 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "开")
+            {
+                OpenFrm openFrm = new OpenFrm(this);
+                openFrm.Show();
+                this.Enabled = false;
+
+            }
+
+            if (e.Node.Text == "闭")
+            {
+                CloseFrm openFrm = new CloseFrm(this);
+                openFrm.Show();
+                this.Enabled = false;
+
+            }
+            if (e.Node.Text == "形态学梯度")
+            {
+                GradientFrm openFrm = new GradientFrm(this);
+                openFrm.Show();
+                this.Enabled = false;
+
+            }
 
 
         }

@@ -43,14 +43,16 @@
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("膨胀");
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("开");
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("闭");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("形态学梯度");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
             treeNode7,
             treeNode8,
             treeNode9,
-            treeNode10});
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("candy");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
-            treeNode12});
+            treeNode10,
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("candy");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode13});
             this.pictBox = new System.Windows.Forms.PictureBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -255,17 +257,19 @@
             treeNode9.Text = "开";
             treeNode10.Name = "节点8";
             treeNode10.Text = "闭";
-            treeNode11.Name = "节点3";
-            treeNode11.Text = "形态";
-            treeNode12.Name = "节点10";
-            treeNode12.Text = "candy";
-            treeNode13.Name = "节点9";
-            treeNode13.Text = "边缘检测";
+            treeNode11.Name = "节点2";
+            treeNode11.Text = "形态学梯度";
+            treeNode12.Name = "节点3";
+            treeNode12.Text = "形态";
+            treeNode13.Name = "节点10";
+            treeNode13.Text = "candy";
+            treeNode14.Name = "节点9";
+            treeNode14.Text = "边缘检测";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode6,
-            treeNode11,
-            treeNode13});
+            treeNode12,
+            treeNode14});
             this.treeView1.Size = new System.Drawing.Size(126, 543);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
