@@ -272,6 +272,14 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "中值模糊")
+            {
+                MedianBlurFrm guaseFrm = new MedianBlurFrm(this);
+                guaseFrm.Show();
+                this.Enabled = false;
+
+            }
+
         }
 
       

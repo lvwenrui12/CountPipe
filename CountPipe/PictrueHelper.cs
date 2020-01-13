@@ -147,7 +147,7 @@ namespace CountPipe
         /// 
         /// </summary>
         /// <param name="initimg"></param>
-        /// <param name="size"></param>
+        /// <param name="size">大小必须是奇数</param>
         /// <param name="sigamaX">标准差X,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
         /// <param name="sigmaY">标准差Y,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
         /// <param name="guaseImg"></param>
@@ -248,6 +248,64 @@ namespace CountPipe
             System.Drawing.Bitmap img = MatToBitmap(mat);
             this.pictureBox.Image = img;
         }
+
+
+
+        /// <summary>
+        /// 中值滤波
+        /// </summary>
+        /// <param name="initImg"></param>
+        /// <param name="size">卷积核大小，大于1的奇数</param>
+        /// <param name="blurImage"></param>
+        public void MedianBlurImg(Mat initImg, int size, out Mat blurImage)
+        {
+            blurImage = new Mat();
+            try
+            {
+                if (size % 2 == 0||size==1)
+                {
+                    return;
+                }
+
+                Cv2.MedianBlur(initImg, blurImage,size);
+              
+            }
+            catch (Exception ex)
+            {
+
+                log.Error("GetBlurImg fail " + ex.Message);
+            }
+
+
+        }
+
+        /// <summary>
+        /// 归一化模糊
+        /// </summary>
+        /// <param name="initImg"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="pointX"></param>
+        /// <param name="pointY"></param>
+        /// <param name="blurImage"></param>
+
+        public void BlurImg(Mat initImg, int width,int height,int pointX,int pointY, out Mat blurImage)
+        {
+            blurImage = new Mat();
+            try
+            {          
+                Cv2.Blur(initImg, blurImage, new Size(width,height),new Point(pointX,pointY));
+
+            }
+            catch (Exception ex)
+            {
+
+                log.Error("BlurImg fail " + ex.Message);
+            }
+
+
+        }
+
 
     }
 }

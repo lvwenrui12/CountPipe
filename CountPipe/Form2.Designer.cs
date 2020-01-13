@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("灰度");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("高斯模糊");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("中值");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("中值模糊");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("滤波", new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode3});
@@ -62,12 +62,14 @@
             this.txtEdgeThresHoldOne = new System.Windows.Forms.TextBox();
             this.btnContours = new System.Windows.Forms.Button();
             this.picRaw = new System.Windows.Forms.PictureBox();
-            this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGray = new System.Windows.Forms.TextBox();
+            this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
@@ -89,7 +91,7 @@
             // btnCount
             // 
             this.btnCount.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCount.Location = new System.Drawing.Point(157, 410);
+            this.btnCount.Location = new System.Drawing.Point(427, 437);
             this.btnCount.Name = "btnCount";
             this.btnCount.Size = new System.Drawing.Size(75, 23);
             this.btnCount.TabIndex = 4;
@@ -101,7 +103,7 @@
             // btnOpen
             // 
             this.btnOpen.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnOpen.Location = new System.Drawing.Point(157, 381);
+            this.btnOpen.Location = new System.Drawing.Point(166, 390);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 3;
@@ -234,7 +236,7 @@
             treeNode2.Name = "节点2";
             treeNode2.Text = "高斯模糊";
             treeNode3.Name = "节点4";
-            treeNode3.Text = "中值";
+            treeNode3.Text = "中值模糊";
             treeNode4.Name = "节点1";
             treeNode4.Text = "滤波";
             treeNode5.Name = "节点5";
@@ -256,14 +258,14 @@
             treeNode4,
             treeNode9,
             treeNode11});
-            this.treeView1.Size = new System.Drawing.Size(121, 488);
+            this.treeView1.Size = new System.Drawing.Size(126, 543);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 464);
+            this.label1.Location = new System.Drawing.Point(176, 437);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 7;
@@ -271,17 +273,37 @@
             // 
             // txtGray
             // 
-            this.txtGray.Location = new System.Drawing.Point(211, 461);
+            this.txtGray.Location = new System.Drawing.Point(268, 392);
             this.txtGray.Name = "txtGray";
             this.txtGray.Size = new System.Drawing.Size(88, 21);
             this.txtGray.TabIndex = 6;
             this.txtGray.Text = "80";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(164, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "处理后";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(695, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 12);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "原图像";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 661);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.picRaw);
             this.Controls.Add(this.btnContours);
@@ -336,5 +358,7 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtGray;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
