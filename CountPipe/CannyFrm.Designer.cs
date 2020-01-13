@@ -58,7 +58,7 @@
             // 
             // txtEdgeThresHoldTwo
             // 
-            this.txtEdgeThresHoldTwo.Location = new System.Drawing.Point(273, 115);
+            this.txtEdgeThresHoldTwo.Location = new System.Drawing.Point(291, 95);
             this.txtEdgeThresHoldTwo.Name = "txtEdgeThresHoldTwo";
             this.txtEdgeThresHoldTwo.Size = new System.Drawing.Size(73, 21);
             this.txtEdgeThresHoldTwo.TabIndex = 22;
@@ -67,16 +67,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(226, 118);
+            this.label4.Location = new System.Drawing.Point(91, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.Size = new System.Drawing.Size(185, 12);
             this.label4.TabIndex = 21;
-            this.label4.Text = "阈值二";
+            this.label4.Text = "阈值二（下限阈值的三倍或二倍）";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(100, 118);
+            this.label5.Location = new System.Drawing.Point(91, 59);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 20;
@@ -84,13 +84,13 @@
             // 
             // txtEdgeThresHoldOne
             // 
-            this.txtEdgeThresHoldOne.Location = new System.Drawing.Point(147, 115);
+            this.txtEdgeThresHoldOne.Location = new System.Drawing.Point(203, 56);
             this.txtEdgeThresHoldOne.Name = "txtEdgeThresHoldOne";
             this.txtEdgeThresHoldOne.Size = new System.Drawing.Size(73, 21);
             this.txtEdgeThresHoldOne.TabIndex = 19;
             this.txtEdgeThresHoldOne.Text = "100";
             // 
-            // CanyFrm
+            // CannyFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,7 +101,7 @@
             this.Controls.Add(this.txtEdgeThresHoldOne);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Name = "CanyFrm";
+            this.Name = "CannyFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Canny算法获取边缘参数设置";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OpenFrm_FormClosed);

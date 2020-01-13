@@ -384,11 +384,14 @@ namespace CountPipe
         #region 边缘检测
 
         /// <summary>
-        /// 边缘检测
+        /// Canny边缘检测低错误率：意味着只检测存在的边缘。
+        ///良好的定位：必须最小化检测到的边缘像素和真实边缘像素之间的距离。
+        ///最小响应：每个边缘只有一个检测器响应。
+        ///步骤：转灰，模糊，边缘检测
         /// </summary>
         /// <param name="initImg"></param>
         /// <param name="threshold1">阈值</param>
-        /// <param name="threshold2">阈值</param>
+        /// <param name="threshold2">阈值下限阈值的三倍或二倍</param>
         /// <param name="cannyImage"></param>
         public void CannyImg(Mat initImg, double threshold1, double threshold2, out Mat cannyImage)
         {
