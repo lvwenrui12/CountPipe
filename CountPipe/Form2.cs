@@ -329,6 +329,20 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "顶帽")
+            {
+                TopHatFrm topHatFrm = new TopHatFrm(this);
+                topHatFrm.Show();
+                this.Enabled = false;
+
+            }
+            if (e.Node.Text == "黑帽")
+            {
+                BlackHatFrm blackHatFrm = new BlackHatFrm(this);
+                blackHatFrm.Show();
+                this.Enabled = false;
+
+            }
 
 
         }

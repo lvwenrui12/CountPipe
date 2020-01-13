@@ -84,6 +84,18 @@
     <Compile Include="GradientFrm.Designer.cs">
       <DependentUpon>GradientFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BlackHatFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlackHatFrm.Designer.cs">
+      <DependentUpon>BlackHatFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopHatFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopHatFrm.Designer.cs">
+      <DependentUpon>TopHatFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GradientFrm.resx">
       <DependentUpon>GradientFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlackHatFrm.resx">
+      <DependentUpon>BlackHatFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopHatFrm.resx">
+      <DependentUpon>TopHatFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenFrm.resx">
       <DependentUpon>OpenFrm.cs</DependentUpon>

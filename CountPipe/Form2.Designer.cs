@@ -44,15 +44,19 @@
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("开");
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("闭");
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("形态学梯度");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("顶帽");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("黑帽");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
             treeNode7,
             treeNode8,
             treeNode9,
             treeNode10,
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("candy");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
             treeNode13});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("candy");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode15});
             this.pictBox = new System.Windows.Forms.PictureBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -71,11 +75,11 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtGray = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
@@ -260,16 +264,20 @@
             treeNode11.Name = "节点2";
             treeNode11.Text = "形态学梯度";
             treeNode12.Name = "节点3";
-            treeNode12.Text = "形态";
-            treeNode13.Name = "节点10";
-            treeNode13.Text = "candy";
-            treeNode14.Name = "节点9";
-            treeNode14.Text = "边缘检测";
+            treeNode12.Text = "顶帽";
+            treeNode13.Name = "节点4";
+            treeNode13.Text = "黑帽";
+            treeNode14.Name = "节点3";
+            treeNode14.Text = "形态";
+            treeNode15.Name = "节点10";
+            treeNode15.Text = "candy";
+            treeNode16.Name = "节点9";
+            treeNode16.Text = "边缘检测";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode6,
-            treeNode12,
-            treeNode14});
+            treeNode14,
+            treeNode16});
             this.treeView1.Size = new System.Drawing.Size(126, 543);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
