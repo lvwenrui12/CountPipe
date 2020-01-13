@@ -368,6 +368,33 @@ namespace CountPipe
 
         }
 
+        /// <summary>
+        /// 腐蚀
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="element">结构元素 ，一定要是奇数</param>
+        /// <param name="borderType">图像边缘处理方法。[默认情况下这是BorderType.Constant]</param>
+        /// <param name="dilateImg"></param>
+        /// <param name="iterations">应用侵蚀的次数。[默认情况下这是1]</param>
+        /// <param name="anchor">锚点位置，默认是null</param>
+        /// <param name="borderValue">在边界为常数的情况下的边界值。默认值具有特殊意义。[默认情况下这是cvcp . morphologydefaultbordervalue ()]</param>
+
+        public void Erode(Mat src, InputArray element, out Mat dilateImg, Point? anchor = null, Scalar? borderValue = null, BorderTypes borderType = BorderTypes.Constant, int iterations = 1)
+        {
+            try
+            {
+                dilateImg = new Mat();
+
+                Cv2.Erode(src, dilateImg, element, anchor, iterations, borderType);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         #endregion
 
 

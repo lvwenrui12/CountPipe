@@ -300,6 +300,13 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "腐蚀")
+            {
+                ErodeFrm enrodeFrm = new ErodeFrm(this);
+                enrodeFrm.Show();
+                this.Enabled = false;
+
+            }
 
 
         }
