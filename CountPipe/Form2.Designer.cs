@@ -32,21 +32,25 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("灰度");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("高斯模糊");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("中值模糊");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("滤波", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("高斯双边滤波");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("归一化滤波");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("滤波", new System.Windows.Forms.TreeNode[] {
             treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("腐蚀");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("膨胀");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("开");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("闭");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("腐蚀");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("膨胀");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("开");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("闭");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
             treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("candy");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode8,
+            treeNode9,
             treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("candy");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode12});
             this.pictBox = new System.Windows.Forms.PictureBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -237,27 +241,31 @@
             treeNode2.Text = "高斯模糊";
             treeNode3.Name = "节点4";
             treeNode3.Text = "中值模糊";
-            treeNode4.Name = "节点1";
-            treeNode4.Text = "滤波";
-            treeNode5.Name = "节点5";
-            treeNode5.Text = "腐蚀";
-            treeNode6.Name = "节点6";
-            treeNode6.Text = "膨胀";
-            treeNode7.Name = "节点7";
-            treeNode7.Text = "开";
-            treeNode8.Name = "节点8";
-            treeNode8.Text = "闭";
-            treeNode9.Name = "节点3";
-            treeNode9.Text = "形态";
-            treeNode10.Name = "节点10";
-            treeNode10.Text = "candy";
-            treeNode11.Name = "节点9";
-            treeNode11.Text = "边缘检测";
+            treeNode4.Name = "节点0";
+            treeNode4.Text = "高斯双边滤波";
+            treeNode5.Name = "节点1";
+            treeNode5.Text = "归一化滤波";
+            treeNode6.Name = "节点1";
+            treeNode6.Text = "滤波";
+            treeNode7.Name = "节点5";
+            treeNode7.Text = "腐蚀";
+            treeNode8.Name = "节点6";
+            treeNode8.Text = "膨胀";
+            treeNode9.Name = "节点7";
+            treeNode9.Text = "开";
+            treeNode10.Name = "节点8";
+            treeNode10.Text = "闭";
+            treeNode11.Name = "节点3";
+            treeNode11.Text = "形态";
+            treeNode12.Name = "节点10";
+            treeNode12.Text = "candy";
+            treeNode13.Name = "节点9";
+            treeNode13.Text = "边缘检测";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode4,
-            treeNode9,
-            treeNode11});
+            treeNode6,
+            treeNode11,
+            treeNode13});
             this.treeView1.Size = new System.Drawing.Size(126, 543);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);

@@ -279,6 +279,13 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "高斯双边滤波")
+            {
+                BilateralBlurFrm bilateralFrm = new BilateralBlurFrm(this);
+                bilateralFrm.Show();
+                this.Enabled = false;
+
+            }
 
         }
 

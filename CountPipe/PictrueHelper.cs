@@ -252,7 +252,7 @@ namespace CountPipe
 
 
         /// <summary>
-        /// 中值滤波
+        /// 中值滤波是取卷积计算的中间值，中值滤波的好处是对图像的椒盐噪声有很好的抑制作用，因为图像的椒盐噪点，是图像某一片区域像素的极大值或者极小值，使用中值滤波可以过滤掉这些噪点
         /// </summary>
         /// <param name="initImg"></param>
         /// <param name="size">卷积核大小，大于1的奇数</param>
@@ -283,8 +283,8 @@ namespace CountPipe
         /// 归一化模糊
         /// </summary>
         /// <param name="initImg"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
+        /// <param name="width">构造工具的宽,奇数</param>
+        /// <param name="height">构造工具的高,奇数</param>
         /// <param name="pointX"></param>
         /// <param name="pointY"></param>
         /// <param name="blurImage"></param>
@@ -293,7 +293,11 @@ namespace CountPipe
         {
             blurImage = new Mat();
             try
-            {          
+            {
+                if (width % 2 == 0 || height % 2 == 0)
+                {
+                    return;
+                }
                 Cv2.Blur(initImg, blurImage, new Size(width,height),new Point(pointX,pointY));
 
             }
@@ -304,6 +308,28 @@ namespace CountPipe
             }
 
 
+        }
+        /// <summary>
+        /// 双边滤波
+        /// </summary>
+        /// <param name="initimg"></param>
+        /// <param name="d">计算半径，在半径范围内的像素都会纳入计算，如果输入-1则根据sigmaSpace取值</param>
+        /// <param name="sigmaColor">决定多少差值之内的像素会被计算  《值域》</param>
+        /// <param name="sigmaSpace">如果 d 的值大于0则无效，否则根据它来计算 d 值</param>
+        /// <param name="bilateralImg"></param>
+
+        public void BilateralBlurImg(Mat initimg, int d, double sigmaColor, double sigmaSpace, out Mat bilateralImg)
+        {
+            bilateralImg = new Mat();
+            try
+            {
+                Cv2.BilateralFilter(initimg,bilateralImg, d, sigmaColor, sigmaSpace); 
+            }
+            catch (Exception ex)
+            {
+
+                log.Error("BilateralBlurImg fail " + ex.Message);
+            }
         }
 
 
