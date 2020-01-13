@@ -293,10 +293,18 @@ namespace CountPipe
                 this.Enabled = false;
 
             }
+            if (e.Node.Text == "膨胀")
+            {
+                DilateFrm dilateFrm = new DilateFrm(this);
+                dilateFrm.Show();
+                this.Enabled = false;
+
+            }
+
 
         }
 
-      
+
     }
 
 

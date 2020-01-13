@@ -143,28 +143,7 @@ namespace CountPipe
 
 
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="initimg"></param>
-        /// <param name="size">大小必须是奇数</param>
-        /// <param name="sigamaX">标准差X,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
-        /// <param name="sigmaY">标准差Y,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
-        /// <param name="guaseImg"></param>
 
-        public void GuaseBlurImg(Mat initimg, int size,double sigamaX, double sigmaY,out Mat guaseImg)
-        {
-            guaseImg = new Mat();
-            try
-            {
-                Cv2.GaussianBlur(initimg, guaseImg, new Size(size, size), sigamaX, sigmaY);
-            }
-            catch (Exception ex)
-            {
-
-                throw (ex);
-            }
-        }
 
         /// <summary>
         /// 获得轮廓 将结果画出并返回结果
@@ -251,6 +230,29 @@ namespace CountPipe
 
 
 
+        #region 滤波
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="initimg"></param>
+        /// <param name="size">大小必须是奇数</param>
+        /// <param name="sigamaX">标准差X,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
+        /// <param name="sigmaY">标准差Y,调大σ即提高了远处像素对中心像素的影响程度，滤波结果也就越平滑</param>
+        /// <param name="guaseImg"></param>
+
+        public void GuaseBlurImg(Mat initimg, int size, double sigamaX, double sigmaY, out Mat guaseImg)
+        {
+            guaseImg = new Mat();
+            try
+            {
+                Cv2.GaussianBlur(initimg, guaseImg, new Size(size, size), sigamaX, sigmaY);
+            }
+            catch (Exception ex)
+            {
+
+                throw (ex);
+            }
+        }
         /// <summary>
         /// 中值滤波是取卷积计算的中间值，中值滤波的好处是对图像的椒盐噪声有很好的抑制作用，因为图像的椒盐噪点，是图像某一片区域像素的极大值或者极小值，使用中值滤波可以过滤掉这些噪点
         /// </summary>
@@ -262,13 +264,13 @@ namespace CountPipe
             blurImage = new Mat();
             try
             {
-                if (size % 2 == 0||size==1)
+                if (size % 2 == 0 || size == 1)
                 {
                     return;
                 }
 
-                Cv2.MedianBlur(initImg, blurImage,size);
-              
+                Cv2.MedianBlur(initImg, blurImage, size);
+
             }
             catch (Exception ex)
             {
@@ -290,7 +292,7 @@ namespace CountPipe
         /// <param name="pointY"></param>
         /// <param name="blurImage"></param>
 
-        public void BlurImg(Mat initImg, int width,int height,int pointX,int pointY, out Mat blurImage)
+        public void BlurImg(Mat initImg, int width, int height, int pointX, int pointY, out Mat blurImage)
         {
             blurImage = new Mat();
             try
@@ -299,7 +301,7 @@ namespace CountPipe
                 {
                     return;
                 }
-                Cv2.Blur(initImg, blurImage, new Size(width,height),new Point(pointX,pointY));
+                Cv2.Blur(initImg, blurImage, new Size(width, height), new Point(pointX, pointY));
 
             }
             catch (Exception ex)
@@ -312,7 +314,7 @@ namespace CountPipe
 
         }
         /// <summary>
-        /// 双边滤波
+        /// 双边滤波 边缘保留的滤波方法，避免了边缘的信息丢失，保留了图像的原有轮廓不不变
         /// </summary>
         /// <param name="initimg"></param>
         /// <param name="d">计算半径，在半径范围内的像素都会纳入计算，如果输入-1则根据sigmaSpace取值</param>
@@ -325,7 +327,7 @@ namespace CountPipe
             bilateralImg = new Mat();
             try
             {
-                Cv2.BilateralFilter(initimg,bilateralImg, d, sigmaColor, sigmaSpace); 
+                Cv2.BilateralFilter(initimg, bilateralImg, d, sigmaColor, sigmaSpace);
             }
             catch (Exception ex)
             {
@@ -334,6 +336,39 @@ namespace CountPipe
                 throw (ex);
             }
         }
+
+        #endregion
+
+        #region 形态操作
+
+        /// <summary>
+        /// 膨胀
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="element">结构元素 ，一定要是奇数</param>
+        /// <param name="borderType">图像边缘处理方法。[默认情况下这是BorderType.Constant]</param>
+        /// <param name="dilateImg"></param>
+        /// <param name="iterations">应用侵蚀的次数。[默认情况下这是1]</param>
+        /// <param name="anchor">锚点位置，默认是null</param>
+        /// <param name="borderValue">在边界为常数的情况下的边界值。默认值具有特殊意义。[默认情况下这是cvcp . morphologydefaultbordervalue ()]</param>
+
+        public void Dilate(Mat src, InputArray element, out Mat dilateImg,Point? anchor = null, Scalar? borderValue = null, BorderTypes borderType = BorderTypes.Constant, int iterations = 1)
+        {
+            try
+            {
+                dilateImg = new Mat();
+
+                Cv2.Dilate(src, dilateImg, element, anchor, iterations, borderType);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        #endregion
 
 
     }

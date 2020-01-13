@@ -1,6 +1,6 @@
 ﻿namespace CountPipe
 {
-    partial class MedianBlurFrm
+    partial class DilateFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,15 +37,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 80);
+            this.label1.Location = new System.Drawing.Point(49, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 12);
+            this.label1.Size = new System.Drawing.Size(101, 12);
             this.label1.TabIndex = 9;
-            this.label1.Text = "卷积核(奇数)";
+            this.label1.Text = "卷积核size(奇数)";
             // 
             // txtSize
             // 
-            this.txtSize.Location = new System.Drawing.Point(207, 80);
+            this.txtSize.Location = new System.Drawing.Point(150, 77);
             this.txtSize.Name = "txtSize";
             this.txtSize.Size = new System.Drawing.Size(88, 21);
             this.txtSize.TabIndex = 8;
@@ -71,7 +71,7 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // MedianBlurFrm
+            // DilateFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,11 +80,10 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSize);
-            this.Name = "MedianBlurFrm";
+            this.Name = "DilateFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "中值模糊参数设置";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GuaseBlurFrm_FormClosed);
-            this.Load += new System.EventHandler(this.GrapFrm_Load);
+            this.Text = "膨胀参数设置";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DilateFrm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

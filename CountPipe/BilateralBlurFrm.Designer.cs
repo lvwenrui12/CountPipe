@@ -126,7 +126,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "高斯双边滤波参数设置";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BilateralBlurFrm_FormClosed);
-           
+            this.Load += new System.EventHandler(this.BilateralBlurFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

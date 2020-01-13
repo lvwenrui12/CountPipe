@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace CountPipe
 {
-    public partial class BilateralBlurFrm: Form
+    public partial class DilateFrm : Form
     {
        
 
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); 
         Form2 parentForm;
         private PictrueHelper pictrueHelper=new PictrueHelper();
-        public BilateralBlurFrm(Form2 form)
+        public DilateFrm(Form2 form)
         {
             InitializeComponent();
             this.parentForm = form;
@@ -37,39 +37,43 @@ namespace CountPipe
                 if (parentForm.rawImg != null)
                 {
 
-                   
-                    int d;
-                    double sigmaColor;
-                    double sigmaSpace;
-                
-                    int.TryParse(txtDiameter.Text, out d);
-                    double.TryParse(txtSigmaColor.Text, out sigmaColor);
-                    double.TryParse(txtSigmaSpace.Text, out sigmaSpace);
-                   
-                    Mat bilateralBlurImg;
-                    pictrueHelper.BilateralBlurImg(parentForm.rawImg, d, sigmaColor, sigmaSpace, out bilateralBlurImg);
-                    parentForm.pictrueHelper.showPic(bilateralBlurImg);
+                  
+
+
+                    int size = 0;
+                 
+                    int.TryParse(txtSize.Text, out size);
+                    if (size % 2 == 0)
+                    {
+                        MessageBox.Show("请输入奇数");
+                        return;
+                    }
+
+                    InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
+
+
+
+                    Mat dilateImg;
+                    pictrueHelper.Dilate(parentForm.rawImg, element,out dilateImg);
+                    parentForm.pictrueHelper.showPic(dilateImg);
                    
                     this.Close();
                 }
             }
             catch (Exception ex)
             {
-                log.Error("BilateralBlurImg fail " + ex.Message);
-               
+                log.Error("dilateImg fail " + ex.Message);
+                MessageBox.Show(ex.Message);
+                
             }
 
         }
 
-      
-        private void BilateralBlurFrm_FormClosed(object sender, FormClosedEventArgs e)
+    
+
+        private void DilateFrm_FormClosed(object sender, FormClosedEventArgs e)
         {
             parentForm.Enabled = true;
-        }
-
-        private void BilateralBlurFrm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
