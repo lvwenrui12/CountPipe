@@ -57,6 +57,11 @@
             System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Canny");
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
             treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("霍夫直线检测");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("霍夫圆检测");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("霍夫", new System.Windows.Forms.TreeNode[] {
+            treeNode17,
+            treeNode18});
             this.pictBox = new System.Windows.Forms.PictureBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -91,7 +96,7 @@
             // btnCount
             // 
             this.btnCount.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCount.Location = new System.Drawing.Point(427, 437);
+            this.btnCount.Location = new System.Drawing.Point(416, 392);
             this.btnCount.Name = "btnCount";
             this.btnCount.Size = new System.Drawing.Size(75, 23);
             this.btnCount.TabIndex = 4;
@@ -171,11 +176,18 @@
             treeNode15.Text = "Canny";
             treeNode16.Name = "节点9";
             treeNode16.Text = "边缘检测";
+            treeNode17.Name = "节点1";
+            treeNode17.Text = "霍夫直线检测";
+            treeNode18.Name = "节点2";
+            treeNode18.Text = "霍夫圆检测";
+            treeNode19.Name = "节点0";
+            treeNode19.Text = "霍夫";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode6,
             treeNode14,
-            treeNode16});
+            treeNode16,
+            treeNode19});
             this.treeView1.Size = new System.Drawing.Size(126, 543);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);

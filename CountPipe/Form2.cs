@@ -292,6 +292,14 @@ namespace CountPipe
 
             }
 
+            if (e.Node.Text == "霍夫直线检测")
+            {
+                HoughLinesFrm blackHatFrm = new HoughLinesFrm(this);
+                blackHatFrm.Show();
+                this.Enabled = false;
+
+            }
+
 
         }
 

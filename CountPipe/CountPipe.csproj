@@ -96,6 +96,12 @@
     <Compile Include="CannyFrm.Designer.cs">
       <DependentUpon>CannyFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoughLinesFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoughLinesFrm.Designer.cs">
+      <DependentUpon>HoughLinesFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TopHatFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CannyFrm.resx">
       <DependentUpon>CannyFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoughLinesFrm.resx">
+      <DependentUpon>HoughLinesFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TopHatFrm.resx">
       <DependentUpon>TopHatFrm.cs</DependentUpon>

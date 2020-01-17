@@ -414,6 +414,37 @@ namespace CountPipe
         }
 
 
+        #region 霍夫变换
+
+        /// <summary>
+        /// 霍夫直线检测
+        /// </summary>
+        /// <param name="initImg">只能输入单通道图像</param>
+        /// <param name="rho">累加器的距离分辨率(以像素为单位) 生成极坐标时候的像素扫描步长</param>
+        /// <param name="theta">累加器的角度分辨率(以弧度为单位)生成极坐标时候的角度步长，一般取值CV_PI/180 ==1度</param>
+        /// <param name="threshold">累加器阈值参数。只有那些足够的行才会返回 投票(>阈值)；设置认为几个像素连载一起</param>
+        /// <param name="lineImg"></param>
+        /// <param name="minLineLength">最小线长度，设置最小线段是有几个像素组成</param>
+        /// <param name="maxLineGap">同一条线上的点之间连接它们的最大允许间隙。(默认情况下是0）：设置你认为像素之间  间隔多少个间隙也能认为是直线* 返回结果出线。每条线由一个4元向量(x1, y1, x2，y2)</param>
+
+        public LineSegmentPoint[] HuofuLine(Mat initImg, double rho, double theta, int threshold,out Mat lineImg, double minLineLength = 0, double maxLineGap = 0)
+        {
+            try
+            {
+
+                lineImg = new Mat(initImg.Size(), MatType.CV_8UC3);
+                LineSegmentPoint[] linePiont = Cv2.HoughLinesP(initImg, rho, theta, threshold, minLineLength, maxLineGap);
+                return linePiont;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
+
+
         #endregion
 
     }
