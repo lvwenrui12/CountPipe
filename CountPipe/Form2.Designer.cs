@@ -75,18 +75,22 @@
             this.dataTable1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBoxPara = new System.Windows.Forms.GroupBox();
+            this.parametersControl1 = new CountPipe.ParametersControl();
+            this.btnOpera = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetOperatorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).BeginInit();
+            this.groupBoxPara.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictBox
             // 
             this.pictBox.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pictBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictBox.Location = new System.Drawing.Point(157, 33);
+            this.pictBox.Location = new System.Drawing.Point(157, 43);
             this.pictBox.Name = "pictBox";
             this.pictBox.Size = new System.Drawing.Size(495, 336);
             this.pictBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,7 +100,7 @@
             // btnCount
             // 
             this.btnCount.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCount.Location = new System.Drawing.Point(416, 392);
+            this.btnCount.Location = new System.Drawing.Point(166, 472);
             this.btnCount.Name = "btnCount";
             this.btnCount.Size = new System.Drawing.Size(75, 23);
             this.btnCount.TabIndex = 4;
@@ -108,7 +112,7 @@
             // btnOpen
             // 
             this.btnOpen.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnOpen.Location = new System.Drawing.Point(166, 390);
+            this.btnOpen.Location = new System.Drawing.Point(166, 400);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 3;
@@ -120,7 +124,7 @@
             // btnContours
             // 
             this.btnContours.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnContours.Location = new System.Drawing.Point(508, 553);
+            this.btnContours.Location = new System.Drawing.Point(166, 510);
             this.btnContours.Name = "btnContours";
             this.btnContours.Size = new System.Drawing.Size(75, 23);
             this.btnContours.TabIndex = 19;
@@ -133,7 +137,7 @@
             // 
             this.picRaw.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.picRaw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picRaw.Location = new System.Drawing.Point(683, 33);
+            this.picRaw.Location = new System.Drawing.Point(658, 43);
             this.picRaw.Name = "picRaw";
             this.picRaw.Size = new System.Drawing.Size(495, 336);
             this.picRaw.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -142,7 +146,7 @@
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 33);
+            this.treeView1.Location = new System.Drawing.Point(12, 43);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "节点0";
             treeNode1.Text = "灰度";
@@ -188,14 +192,14 @@
             treeNode14,
             treeNode16,
             treeNode19});
-            this.treeView1.Size = new System.Drawing.Size(126, 543);
+            this.treeView1.Size = new System.Drawing.Size(126, 506);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(176, 437);
+            this.label1.Location = new System.Drawing.Point(164, 440);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 7;
@@ -203,7 +207,7 @@
             // 
             // txtGray
             // 
-            this.txtGray.Location = new System.Drawing.Point(268, 392);
+            this.txtGray.Location = new System.Drawing.Point(232, 431);
             this.txtGray.Name = "txtGray";
             this.txtGray.Size = new System.Drawing.Size(88, 21);
             this.txtGray.TabIndex = 6;
@@ -212,7 +216,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(164, 9);
+            this.label6.Location = new System.Drawing.Point(200, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 22;
@@ -221,17 +225,48 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(695, 9);
+            this.label7.Location = new System.Drawing.Point(684, 19);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 23;
             this.label7.Text = "原图像";
+            // 
+            // groupBoxPara
+            // 
+            this.groupBoxPara.Controls.Add(this.parametersControl1);
+            this.groupBoxPara.Location = new System.Drawing.Point(317, 400);
+            this.groupBoxPara.Name = "groupBoxPara";
+            this.groupBoxPara.Size = new System.Drawing.Size(408, 235);
+            this.groupBoxPara.TabIndex = 24;
+            this.groupBoxPara.TabStop = false;
+            this.groupBoxPara.Text = "参数设置";
+            // 
+            // parametersControl1
+            // 
+            this.parametersControl1.Location = new System.Drawing.Point(17, 17);
+            this.parametersControl1.Name = "parametersControl1";
+            this.parametersControl1.Size = new System.Drawing.Size(376, 203);
+            this.parametersControl1.TabIndex = 0;
+            // 
+            // btnOpera
+            // 
+            this.btnOpera.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnOpera.Location = new System.Drawing.Point(166, 553);
+            this.btnOpera.Name = "btnOpera";
+            this.btnOpera.Size = new System.Drawing.Size(75, 23);
+            this.btnOpera.TabIndex = 25;
+            this.btnOpera.Text = "处理";
+            this.btnOpera.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnOpera.UseVisualStyleBackColor = true;
+            this.btnOpera.Click += new System.EventHandler(this.btnOpera_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 661);
+            this.Controls.Add(this.btnOpera);
+            this.Controls.Add(this.groupBoxPara);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.treeView1);
@@ -250,6 +285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetOperatorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource)).EndInit();
+            this.groupBoxPara.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,5 +307,8 @@
         private System.Windows.Forms.TextBox txtGray;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBoxPara;
+        private ParametersControl parametersControl1;
+        private System.Windows.Forms.Button btnOpera;
     }
 }

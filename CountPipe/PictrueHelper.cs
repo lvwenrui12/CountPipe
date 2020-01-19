@@ -19,6 +19,10 @@ namespace CountPipe
         {
            
         }
+        public PictrueHelper(PictureBox pictureBox)
+        {
+            this.pictureBox = pictureBox;
+        }
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名字要在 App.config 中能找到
 
         /// <summary>

@@ -44,6 +44,9 @@
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenCvSharp3-AnyCPU.4.0.0.20181129\lib\net461\OpenCvSharp.dll</HintPath>
     </Reference>
@@ -72,11 +75,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CloseFrm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="CloseUserC.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CloseFrm.Designer.cs">
-      <DependentUpon>CloseFrm.cs</DependentUpon>
+    <Compile Include="CloseUserC.Designer.cs">
+      <DependentUpon>CloseUserC.cs</DependentUpon>
     </Compile>
     <Compile Include="GradientFrm.cs">
       <SubType>Form</SubType>
@@ -101,6 +104,12 @@
     </Compile>
     <Compile Include="HoughLinesFrm.Designer.cs">
       <DependentUpon>HoughLinesFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParametersControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ParametersControl.Designer.cs">
+      <DependentUpon>ParametersControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TopHatFrm.cs">
       <SubType>Form</SubType>
@@ -177,8 +186,8 @@
     <Compile Include="PictrueHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CloseFrm.resx">
-      <DependentUpon>CloseFrm.cs</DependentUpon>
+    <EmbeddedResource Include="CloseUserC.resx">
+      <DependentUpon>CloseUserC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GradientFrm.resx">
       <DependentUpon>GradientFrm.cs</DependentUpon>
@@ -191,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HoughLinesFrm.resx">
       <DependentUpon>HoughLinesFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParametersControl.resx">
+      <DependentUpon>ParametersControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TopHatFrm.resx">
       <DependentUpon>TopHatFrm.cs</DependentUpon>

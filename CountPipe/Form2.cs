@@ -1,4 +1,6 @@
-﻿using OpenCvSharp;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,12 +27,24 @@ namespace CountPipe
 
         public PictrueHelper pictrueHelper;
 
+        System.Drawing.Point paramPoint;
+
+        private String seleNodeName;
+
+
+
         public Form2()
         {
             InitializeComponent();
+
+            
+
+           pictrueHelper = new PictrueHelper(this.pictBox);
           
-            pictrueHelper = new PictrueHelper();
-            pictrueHelper.pictureBox = this.pictBox;
+           paramPoint = this.parametersControl1.Location;
+
+          
+         
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -192,8 +206,10 @@ namespace CountPipe
 
         private void btnContours_Click(object sender, EventArgs e)
         {
-            OpenCvSharp.Point[][] contours;
-            pictrueHelper.GetContours(edgeImg,out contours);
+
+          
+          
+
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -258,9 +274,18 @@ namespace CountPipe
 
             if (e.Node.Text == "闭")
             {
-                CloseFrm openFrm = new CloseFrm(this);
-                openFrm.Show();
-                this.Enabled = false;
+                seleNodeName = e.Node.Text;
+                //CloseFrm closeFrm = new CloseFrm(this);
+                //closeFrm.Show();
+                //this.Enabled = false;
+
+                this.groupBoxPara.Controls.Remove(parametersControl1);
+                parametersControl1 = new CloseUserC();
+                parametersControl1.Location = paramPoint;
+
+                groupBoxPara.Controls.Add(parametersControl1);
+                groupBoxPara.SendToBack();
+                parametersControl1.BringToFront();
 
             }
             if (e.Node.Text == "形态学梯度")
@@ -305,7 +330,50 @@ namespace CountPipe
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.Controls.Remove(this.parametersControl1);
+            parametersControl1 = new CloseUserC();
+            parametersControl1.Location = paramPoint;
+            groupBoxPara.Controls.Add(parametersControl1);
+            groupBoxPara.SendToBack();
+            parametersControl1.BringToFront();
+        }
 
+        private void btnOpera_Click(object sender, EventArgs e)
+        {
+            if (seleNodeName == "闭")
+            {
+                CloseUserC closeC = (CloseUserC)parametersControl1;
+
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        int size = 0;
+                        String str = closeC.getSize();
+                        int.TryParse(closeC.getSize(), out size);
+                        if (size % 2 == 0)
+                        {
+                            MessageBox.Show("请输入奇数");
+                            return;
+                        }
+
+                        InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
+
+                        Mat dilateImg;
+                        pictrueHelper.MorphologyEx(rawImg, element, MorphTypes.Close, out dilateImg);
+
+                        this.pictBox.Image = pictrueHelper.MatToBitmap(dilateImg);
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("dilateImg fail " + ex.Message);
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
         }
     }
 
