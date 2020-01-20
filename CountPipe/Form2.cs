@@ -219,18 +219,13 @@ namespace CountPipe
             if (e.Node.Text == "灰度")
             {
                 curentOpera = OperaEnum.Gray;
-                GrapFrm grapFrm = new GrapFrm(this);
-                grapFrm.Show();
-                this.Enabled = false;
-
+                changeParaControl(new GrayUserC(), e);
             }
 
             if (e.Node.Text == "高斯模糊")
             {
                 curentOpera = OperaEnum.GuaseBlur;
-                GuaseBlurFrm guaseFrm = new GuaseBlurFrm(this);
-                guaseFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new GuaseblurUserC(), e);
 
             }
             if (e.Node.Text == "中值模糊")
@@ -244,7 +239,7 @@ namespace CountPipe
             if (e.Node.Text == "高斯双边滤波")
             {
                 curentOpera = OperaEnum.BilateraBlur;
-              
+
                 changeParaControl(new BilateralBlurUserC(), e);
             }
             if (e.Node.Text == "归一化滤波")
@@ -339,7 +334,7 @@ namespace CountPipe
             groupBoxPara.SendToBack();
             parametersControl1.BringToFront();
             this.treeView1.ExpandAll();
-        
+
         }
 
         private void btnOpera_Click(object sender, EventArgs e)
@@ -347,7 +342,7 @@ namespace CountPipe
             if (curentOpera == OperaEnum.Close)
             {
                 CloseUserC closeC = (CloseUserC)parametersControl1;
-              
+
                 morphologyOpera(closeC.getSize(), MorphTypes.Close);
 
             }
@@ -360,7 +355,7 @@ namespace CountPipe
             {
                 CloseUserC closeC = (CloseUserC)parametersControl1;
                 morphologyOpera(closeC.getSize(), MorphTypes.BlackHat);
-              
+
             }
             if (curentOpera == OperaEnum.Gradient)
             {
@@ -397,7 +392,7 @@ namespace CountPipe
                 }
             }
 
-            if (curentOpera==OperaEnum.Canny)
+            if (curentOpera == OperaEnum.Canny)
             {
                 CannyUserC cannyUserC = (CannyUserC)parametersControl1;
 
@@ -421,7 +416,7 @@ namespace CountPipe
                         Mat cannyImg;
                         pictrueHelper.CannyImg(rawImg, thresHold1, thresHold2, out cannyImg);
                         pictrueHelper.showPic(cannyImg);
-                      
+
                     }
                 }
                 catch (Exception ex)
@@ -433,7 +428,68 @@ namespace CountPipe
 
             }
 
+            if (curentOpera == OperaEnum.Gray)
+            {
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        GrayUserC grayC = (GrayUserC)parametersControl1;
+                        double dvalue = 0;
+                        double.TryParse(grayC.getGrayThreshold(), out dvalue);
+                        if (dvalue == 0)
+                        {
+                            dvalue = 10;
+                        }
+                        Mat grayImg;
+                        pictrueHelper.Tobinimg_inv(rawImg, dvalue, out grayImg);
+                        pictrueHelper.showPic(grayImg);
 
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("gray fail " + ex.Message);
+                    throw (ex);
+                }
+            }
+
+            if (curentOpera == OperaEnum.GuaseBlur)
+            {
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        GuaseblurUserC guaseblurUserC = (GuaseblurUserC)parametersControl1;
+                        int size = 0;
+                        double sigmaX = 0;
+                        double sigmaY = 0;
+                        int.TryParse(guaseblurUserC.getSize(), out size);
+                        double.TryParse(guaseblurUserC.getSigmaX(), out sigmaX);
+                        double.TryParse(guaseblurUserC.getSigmaY(), out sigmaY);
+                        if (size == 0)
+                        {
+                            size = 5;
+                        }
+                        if (size % 2 == 0)
+                        {
+                            MessageBox.Show("请输入奇数");
+                            return;
+                        }
+                        Mat guaseImg;
+                        pictrueHelper.GuaseBlurImg(rawImg, size, sigmaX, sigmaY, out guaseImg);
+                        pictrueHelper.showPic(guaseImg);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("gray fail " + ex.Message);
+                    throw (ex);
+                }
+            }
         }
 
         /// <summary>
@@ -465,7 +521,7 @@ namespace CountPipe
             }
             catch (Exception ex)
             {
-                log.Error("MorphShapes fail :"+ morphTypes + ex.Message);
+                log.Error("MorphShapes fail :" + morphTypes + ex.Message);
                 MessageBox.Show(ex.Message);
 
             }

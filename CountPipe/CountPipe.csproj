@@ -93,6 +93,18 @@
     <Compile Include="CloseUserC.Designer.cs">
       <DependentUpon>CloseUserC.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrayUserC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GrayUserC.Designer.cs">
+      <DependentUpon>GrayUserC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GuaseblurUserC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GuaseblurUserC.Designer.cs">
+      <DependentUpon>GuaseblurUserC.cs</DependentUpon>
+    </Compile>
     <Compile Include="HoughLinesFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,23 +118,11 @@
     <Compile Include="ParametersControl.Designer.cs">
       <DependentUpon>ParametersControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="OpenFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OpenFrm.Designer.cs">
-      <DependentUpon>OpenFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ErodeFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ErodeFrm.Designer.cs">
       <DependentUpon>ErodeFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Emgu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Emgu.Designer.cs">
-      <DependentUpon>Emgu.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -154,18 +154,6 @@
     <Compile Include="MedianBlurFrm.Designer.cs">
       <DependentUpon>MedianBlurFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GuaseBlurFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GuaseBlurFrm.Designer.cs">
-      <DependentUpon>GuaseBlurFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GrapFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GrapFrm.Designer.cs">
-      <DependentUpon>GrapFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="PictrueHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,20 +166,20 @@
     <EmbeddedResource Include="CloseUserC.resx">
       <DependentUpon>CloseUserC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GrayUserC.resx">
+      <DependentUpon>GrayUserC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuaseblurUserC.resx">
+      <DependentUpon>GuaseblurUserC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HoughLinesFrm.resx">
       <DependentUpon>HoughLinesFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParametersControl.resx">
       <DependentUpon>ParametersControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OpenFrm.resx">
-      <DependentUpon>OpenFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ErodeFrm.resx">
       <DependentUpon>ErodeFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Emgu.resx">
-      <DependentUpon>Emgu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -207,12 +195,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MedianBlurFrm.resx">
       <DependentUpon>MedianBlurFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GuaseBlurFrm.resx">
-      <DependentUpon>GuaseBlurFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GrapFrm.resx">
-      <DependentUpon>GrapFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
