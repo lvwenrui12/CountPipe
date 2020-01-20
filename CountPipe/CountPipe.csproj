@@ -81,29 +81,17 @@
     <Compile Include="BilateralBlurUserC.Designer.cs">
       <DependentUpon>BilateralBlurUserC.cs</DependentUpon>
     </Compile>
+    <Compile Include="CannyUserC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CannyUserC.Designer.cs">
+      <DependentUpon>CannyUserC.cs</DependentUpon>
+    </Compile>
     <Compile Include="CloseUserC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CloseUserC.Designer.cs">
       <DependentUpon>CloseUserC.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GradientFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GradientFrm.Designer.cs">
-      <DependentUpon>GradientFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BlackHatFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BlackHatFrm.Designer.cs">
-      <DependentUpon>BlackHatFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CannyFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CannyFrm.Designer.cs">
-      <DependentUpon>CannyFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="HoughLinesFrm.cs">
       <SubType>Form</SubType>
@@ -117,12 +105,6 @@
     </Compile>
     <Compile Include="ParametersControl.Designer.cs">
       <DependentUpon>ParametersControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TopHatFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TopHatFrm.Designer.cs">
-      <DependentUpon>TopHatFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="OpenFrm.cs">
       <SubType>Form</SubType>
@@ -153,12 +135,6 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BilateralBlurFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BilateralBlurFrm.Designer.cs">
-      <DependentUpon>BilateralBlurFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="DilateFrm.cs">
       <SubType>Form</SubType>
@@ -196,26 +172,17 @@
     <EmbeddedResource Include="BilateralBlurUserC.resx">
       <DependentUpon>BilateralBlurUserC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CannyUserC.resx">
+      <DependentUpon>CannyUserC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CloseUserC.resx">
       <DependentUpon>CloseUserC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GradientFrm.resx">
-      <DependentUpon>GradientFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BlackHatFrm.resx">
-      <DependentUpon>BlackHatFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CannyFrm.resx">
-      <DependentUpon>CannyFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HoughLinesFrm.resx">
       <DependentUpon>HoughLinesFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParametersControl.resx">
       <DependentUpon>ParametersControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TopHatFrm.resx">
-      <DependentUpon>TopHatFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OpenFrm.resx">
       <DependentUpon>OpenFrm.cs</DependentUpon>
@@ -231,9 +198,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BilateralBlurFrm.resx">
-      <DependentUpon>BilateralBlurFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DilateFrm.resx">
       <DependentUpon>DilateFrm.cs</DependentUpon>

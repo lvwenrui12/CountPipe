@@ -244,10 +244,8 @@ namespace CountPipe
             if (e.Node.Text == "高斯双边滤波")
             {
                 curentOpera = OperaEnum.BilateraBlur;
-                BilateralBlurFrm bilateralBlurFrm = new BilateralBlurFrm(this);
-                bilateralBlurFrm.Show();
-                this.Enabled = false;
-                //changeParaControl(new BilateralBlurUserC(), e);
+              
+                changeParaControl(new BilateralBlurUserC(), e);
             }
             if (e.Node.Text == "归一化滤波")
             {
@@ -260,17 +258,13 @@ namespace CountPipe
             if (e.Node.Text == "膨胀")
             {
                 curentOpera = OperaEnum.Dilate;
-                DilateFrm dilateFrm = new DilateFrm(this);
-                dilateFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "腐蚀")
             {
                 curentOpera = OperaEnum.Erode;
-                ErodeFrm enrodeFrm = new ErodeFrm(this);
-                enrodeFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "开")
@@ -289,33 +283,25 @@ namespace CountPipe
             if (e.Node.Text == "形态学梯度")
             {
                 curentOpera = OperaEnum.Gradient;
-                GradientFrm openFrm = new GradientFrm(this);
-                openFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "顶帽")
             {
                 curentOpera = OperaEnum.TopHat;
-                TopHatFrm topHatFrm = new TopHatFrm(this);
-                topHatFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "黑帽")
             {
                 curentOpera = OperaEnum.BlackHat;
-                BlackHatFrm blackHatFrm = new BlackHatFrm(this);
-                blackHatFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "Canny")
             {
                 curentOpera = OperaEnum.Canny;
-                CannyFrm blackHatFrm = new CannyFrm(this);
-                blackHatFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new CannyUserC(), e);
 
             }
 
@@ -361,66 +347,26 @@ namespace CountPipe
             if (curentOpera == OperaEnum.Close)
             {
                 CloseUserC closeC = (CloseUserC)parametersControl1;
+              
+                morphologyOpera(closeC.getSize(), MorphTypes.Close);
 
-                try
-                {
-                    if (rawImg != null)
-                    {
-                        int size = 0;
-                        String str = closeC.getSize();
-                        int.TryParse(closeC.getSize(), out size);
-                        if (size % 2 == 0)
-                        {
-                            MessageBox.Show("请输入奇数");
-                            return;
-                        }
-
-                        InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
-
-                        Mat dilateImg;
-                        pictrueHelper.MorphologyEx(rawImg, element, MorphTypes.Close, out dilateImg);
-
-                        pictrueHelper.showPic(dilateImg);
-
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log.Error("CloseImg fail " + ex.Message);
-                    MessageBox.Show(ex.Message);
-
-                }
             }
             if (curentOpera == OperaEnum.Open)
             {
-                try
-                {
-                    if (rawImg != null)
-                    {
-                        CloseUserC closeC = (CloseUserC)parametersControl1;
+                CloseUserC closeC = (CloseUserC)parametersControl1;
+                morphologyOpera(closeC.getSize(), MorphTypes.Open);
+            }
+            if (curentOpera == OperaEnum.BlackHat)
+            {
+                CloseUserC closeC = (CloseUserC)parametersControl1;
+                morphologyOpera(closeC.getSize(), MorphTypes.BlackHat);
+              
+            }
+            if (curentOpera == OperaEnum.Gradient)
+            {
+                CloseUserC closeC = (CloseUserC)parametersControl1;
+                morphologyOpera(closeC.getSize(), MorphTypes.Gradient);
 
-                        int size = 0;
-
-                        int.TryParse(closeC.getSize(), out size);
-                        if (size % 2 == 0)
-                        {
-                            MessageBox.Show("请输入奇数");
-                            return;
-                        }
-                        InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
-                        Mat dilateImg;
-                        pictrueHelper.MorphologyEx(rawImg, element, MorphTypes.Open, out dilateImg);
-                        pictrueHelper.showPic(dilateImg);
-
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log.Error("openImg fail " + ex.Message);
-                    MessageBox.Show(ex.Message);
-
-                }
             }
             if (curentOpera == OperaEnum.BilateraBlur)
             {
@@ -451,7 +397,78 @@ namespace CountPipe
                 }
             }
 
+            if (curentOpera==OperaEnum.Canny)
+            {
+                CannyUserC cannyUserC = (CannyUserC)parametersControl1;
 
+
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        double thresHold1 = 0;
+                        double.TryParse(cannyUserC.getThreshold1(), out thresHold1);
+                        if (thresHold1 == 0)
+                        {
+                            thresHold1 = 10;
+                        }
+                        double thresHold2 = 0;
+                        double.TryParse(cannyUserC.getThreshold2(), out thresHold2);
+                        if (thresHold2 == 0)
+                        {
+                            thresHold2 = 10;
+                        }
+                        Mat cannyImg;
+                        pictrueHelper.CannyImg(rawImg, thresHold1, thresHold2, out cannyImg);
+                        pictrueHelper.showPic(cannyImg);
+                      
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("CannyImg fail " + ex.Message);
+                    MessageBox.Show(ex.Message);
+
+                }
+
+            }
+
+
+        }
+
+        /// <summary>
+        ///  形态学操作
+        /// </summary>
+        /// <param name="sizeStr">卷积核</param>
+        /// <param name="morphTypes"></param>
+        private void morphologyOpera(string sizeStr, MorphTypes morphTypes)
+        {
+            try
+            {
+                if (rawImg != null)
+                {
+                    CloseUserC closeC = (CloseUserC)parametersControl1;
+
+                    int size = 0;
+
+                    int.TryParse(sizeStr, out size);
+                    if (size % 2 == 0)
+                    {
+                        MessageBox.Show("请输入奇数");
+                        return;
+                    }
+                    InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
+                    Mat dilateImg;
+                    pictrueHelper.MorphologyEx(rawImg, element, morphTypes, out dilateImg);
+                    pictrueHelper.showPic(dilateImg);
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error("MorphShapes fail :"+ morphTypes + ex.Message);
+                MessageBox.Show(ex.Message);
+
+            }
         }
     }
 
