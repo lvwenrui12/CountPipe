@@ -16,8 +16,8 @@ namespace CountPipe
     public partial class Form2 : Form
     {
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名
-        //原始
-       public Mat rawImg;
+                                                                                           //原始
+        public Mat rawImg;
         //灰度后结果
         public Mat grayImg;
         //滤波后结果
@@ -31,20 +31,22 @@ namespace CountPipe
 
         private String seleNodeName;
 
+        private OperaEnum curentOpera;
+
 
 
         public Form2()
         {
             InitializeComponent();
 
-            
 
-           pictrueHelper = new PictrueHelper(this.pictBox);
-          
-           paramPoint = this.parametersControl1.Location;
 
-          
-         
+            pictrueHelper = new PictrueHelper(this.pictBox);
+
+            paramPoint = this.parametersControl1.Location;
+
+
+
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -55,9 +57,9 @@ namespace CountPipe
                 if (filename != null && filename != "")
                 {
                     picRaw.Load(filename);
-                   
+
                     Mat img = Cv2.ImRead(filename);
-                     rawImg = img.Clone();
+                    rawImg = img.Clone();
                     pictrueHelper.showPic(img);
 
                 }
@@ -200,15 +202,15 @@ namespace CountPipe
 
         }
 
-     
 
- 
+
+
 
         private void btnContours_Click(object sender, EventArgs e)
         {
 
-          
-          
+
+
 
         }
 
@@ -216,14 +218,16 @@ namespace CountPipe
         {
             if (e.Node.Text == "灰度")
             {
+                curentOpera = OperaEnum.Gray;
                 GrapFrm grapFrm = new GrapFrm(this);
                 grapFrm.Show();
                 this.Enabled = false;
-               
+
             }
 
             if (e.Node.Text == "高斯模糊")
             {
+                curentOpera = OperaEnum.GuaseBlur;
                 GuaseBlurFrm guaseFrm = new GuaseBlurFrm(this);
                 guaseFrm.Show();
                 this.Enabled = false;
@@ -231,6 +235,7 @@ namespace CountPipe
             }
             if (e.Node.Text == "中值模糊")
             {
+                curentOpera = OperaEnum.MedianBlur;
                 MedianBlurFrm guaseFrm = new MedianBlurFrm(this);
                 guaseFrm.Show();
                 this.Enabled = false;
@@ -238,13 +243,15 @@ namespace CountPipe
             }
             if (e.Node.Text == "高斯双边滤波")
             {
-                BilateralBlurFrm bilateralFrm = new BilateralBlurFrm(this);
-                bilateralFrm.Show();
+                curentOpera = OperaEnum.BilateraBlur;
+                BilateralBlurFrm bilateralBlurFrm = new BilateralBlurFrm(this);
+                bilateralBlurFrm.Show();
                 this.Enabled = false;
-
+                //changeParaControl(new BilateralBlurUserC(), e);
             }
             if (e.Node.Text == "归一化滤波")
             {
+                curentOpera = OperaEnum.NormalizedBlur;
                 NormalizedBlurFrm normalizedFrm = new NormalizedBlurFrm(this);
                 normalizedFrm.Show();
                 this.Enabled = false;
@@ -252,6 +259,7 @@ namespace CountPipe
             }
             if (e.Node.Text == "膨胀")
             {
+                curentOpera = OperaEnum.Dilate;
                 DilateFrm dilateFrm = new DilateFrm(this);
                 dilateFrm.Show();
                 this.Enabled = false;
@@ -259,6 +267,7 @@ namespace CountPipe
             }
             if (e.Node.Text == "腐蚀")
             {
+                curentOpera = OperaEnum.Erode;
                 ErodeFrm enrodeFrm = new ErodeFrm(this);
                 enrodeFrm.Show();
                 this.Enabled = false;
@@ -266,30 +275,20 @@ namespace CountPipe
             }
             if (e.Node.Text == "开")
             {
-                OpenFrm openFrm = new OpenFrm(this);
-                openFrm.Show();
-                this.Enabled = false;
+                curentOpera = OperaEnum.Open;
+                changeParaControl(new CloseUserC(), e);
 
             }
 
             if (e.Node.Text == "闭")
             {
-                seleNodeName = e.Node.Text;
-                //CloseFrm closeFrm = new CloseFrm(this);
-                //closeFrm.Show();
-                //this.Enabled = false;
-
-                this.groupBoxPara.Controls.Remove(parametersControl1);
-                parametersControl1 = new CloseUserC();
-                parametersControl1.Location = paramPoint;
-
-                groupBoxPara.Controls.Add(parametersControl1);
-                groupBoxPara.SendToBack();
-                parametersControl1.BringToFront();
+                curentOpera = OperaEnum.Close;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "形态学梯度")
             {
+                curentOpera = OperaEnum.Gradient;
                 GradientFrm openFrm = new GradientFrm(this);
                 openFrm.Show();
                 this.Enabled = false;
@@ -297,6 +296,7 @@ namespace CountPipe
             }
             if (e.Node.Text == "顶帽")
             {
+                curentOpera = OperaEnum.TopHat;
                 TopHatFrm topHatFrm = new TopHatFrm(this);
                 topHatFrm.Show();
                 this.Enabled = false;
@@ -304,6 +304,7 @@ namespace CountPipe
             }
             if (e.Node.Text == "黑帽")
             {
+                curentOpera = OperaEnum.BlackHat;
                 BlackHatFrm blackHatFrm = new BlackHatFrm(this);
                 blackHatFrm.Show();
                 this.Enabled = false;
@@ -311,6 +312,7 @@ namespace CountPipe
             }
             if (e.Node.Text == "Canny")
             {
+                curentOpera = OperaEnum.Canny;
                 CannyFrm blackHatFrm = new CannyFrm(this);
                 blackHatFrm.Show();
                 this.Enabled = false;
@@ -319,6 +321,7 @@ namespace CountPipe
 
             if (e.Node.Text == "霍夫直线检测")
             {
+                curentOpera = OperaEnum.HoughLines;
                 HoughLinesFrm blackHatFrm = new HoughLinesFrm(this);
                 blackHatFrm.Show();
                 this.Enabled = false;
@@ -326,6 +329,19 @@ namespace CountPipe
             }
 
 
+        }
+
+        private void changeParaControl(ParametersControl changeControl, TreeNodeMouseClickEventArgs e)
+        {
+            seleNodeName = e.Node.Text;
+
+            this.groupBoxPara.Controls.Remove(parametersControl1);
+            parametersControl1 = changeControl;
+            parametersControl1.Location = paramPoint;
+
+            groupBoxPara.Controls.Add(parametersControl1);
+            groupBoxPara.SendToBack();
+            parametersControl1.BringToFront();
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -336,11 +352,13 @@ namespace CountPipe
             groupBoxPara.Controls.Add(parametersControl1);
             groupBoxPara.SendToBack();
             parametersControl1.BringToFront();
+            this.treeView1.ExpandAll();
+        
         }
 
         private void btnOpera_Click(object sender, EventArgs e)
         {
-            if (seleNodeName == "闭")
+            if (curentOpera == OperaEnum.Close)
             {
                 CloseUserC closeC = (CloseUserC)parametersControl1;
 
@@ -362,18 +380,78 @@ namespace CountPipe
                         Mat dilateImg;
                         pictrueHelper.MorphologyEx(rawImg, element, MorphTypes.Close, out dilateImg);
 
-                        this.pictBox.Image = pictrueHelper.MatToBitmap(dilateImg);
+                        pictrueHelper.showPic(dilateImg);
 
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    log.Error("dilateImg fail " + ex.Message);
+                    log.Error("CloseImg fail " + ex.Message);
                     MessageBox.Show(ex.Message);
 
                 }
             }
+            if (curentOpera == OperaEnum.Open)
+            {
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        CloseUserC closeC = (CloseUserC)parametersControl1;
+
+                        int size = 0;
+
+                        int.TryParse(closeC.getSize(), out size);
+                        if (size % 2 == 0)
+                        {
+                            MessageBox.Show("请输入奇数");
+                            return;
+                        }
+                        InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
+                        Mat dilateImg;
+                        pictrueHelper.MorphologyEx(rawImg, element, MorphTypes.Open, out dilateImg);
+                        pictrueHelper.showPic(dilateImg);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("openImg fail " + ex.Message);
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+            if (curentOpera == OperaEnum.BilateraBlur)
+            {
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        int d;
+                        double sigmaColor;
+                        double sigmaSpace;
+                        BilateralBlurUserC bilateralBlurUserC = (BilateralBlurUserC)parametersControl1;
+
+                        int.TryParse(bilateralBlurUserC.getDiameter(), out d);
+                        double.TryParse(bilateralBlurUserC.getSigmaColor(), out sigmaColor);
+                        double.TryParse(bilateralBlurUserC.getSigmaSpace(), out sigmaSpace);
+
+                        Mat bilateralBlurImg;
+                        pictrueHelper.BilateralBlurImg(rawImg, d, sigmaColor, sigmaSpace, out bilateralBlurImg);
+                        pictrueHelper.showPic(bilateralBlurImg);
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("BilateralBlurImg fail " + ex.Message);
+
+                }
+            }
+
+
         }
     }
 

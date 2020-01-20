@@ -76,8 +76,8 @@
             this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxPara = new System.Windows.Forms.GroupBox();
-            this.parametersControl1 = new CountPipe.ParametersControl();
             this.btnOpera = new System.Windows.Forms.Button();
+            this.parametersControl1 = new CountPipe.ParametersControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
@@ -234,19 +234,12 @@
             // groupBoxPara
             // 
             this.groupBoxPara.Controls.Add(this.parametersControl1);
-            this.groupBoxPara.Location = new System.Drawing.Point(317, 400);
+            this.groupBoxPara.Location = new System.Drawing.Point(359, 400);
             this.groupBoxPara.Name = "groupBoxPara";
             this.groupBoxPara.Size = new System.Drawing.Size(408, 235);
             this.groupBoxPara.TabIndex = 24;
             this.groupBoxPara.TabStop = false;
             this.groupBoxPara.Text = "参数设置";
-            // 
-            // parametersControl1
-            // 
-            this.parametersControl1.Location = new System.Drawing.Point(17, 17);
-            this.parametersControl1.Name = "parametersControl1";
-            this.parametersControl1.Size = new System.Drawing.Size(376, 203);
-            this.parametersControl1.TabIndex = 0;
             // 
             // btnOpera
             // 
@@ -259,6 +252,13 @@
             this.btnOpera.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnOpera.UseVisualStyleBackColor = true;
             this.btnOpera.Click += new System.EventHandler(this.btnOpera_Click);
+            // 
+            // parametersControl1
+            // 
+            this.parametersControl1.Location = new System.Drawing.Point(17, 17);
+            this.parametersControl1.Name = "parametersControl1";
+            this.parametersControl1.Size = new System.Drawing.Size(376, 203);
+            this.parametersControl1.TabIndex = 0;
             // 
             // Form2
             // 
