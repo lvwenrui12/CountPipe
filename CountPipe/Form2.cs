@@ -230,10 +230,8 @@ namespace CountPipe
             }
             if (e.Node.Text == "中值模糊")
             {
-                curentOpera = OperaEnum.MedianBlur;
-                MedianBlurFrm guaseFrm = new MedianBlurFrm(this);
-                guaseFrm.Show();
-                this.Enabled = false;
+                curentOpera = OperaEnum.Erode;
+                changeParaControl(new CloseUserC(), e);
 
             }
             if (e.Node.Text == "高斯双边滤波")
@@ -245,9 +243,7 @@ namespace CountPipe
             if (e.Node.Text == "归一化滤波")
             {
                 curentOpera = OperaEnum.NormalizedBlur;
-                NormalizedBlurFrm normalizedFrm = new NormalizedBlurFrm(this);
-                normalizedFrm.Show();
-                this.Enabled = false;
+                changeParaControl(new NormalizedBlurUserC(), e);
 
             }
             if (e.Node.Text == "膨胀")
@@ -285,7 +281,6 @@ namespace CountPipe
             {
                 curentOpera = OperaEnum.TopHat;
                 changeParaControl(new CloseUserC(), e);
-
             }
             if (e.Node.Text == "黑帽")
             {
@@ -303,10 +298,7 @@ namespace CountPipe
             if (e.Node.Text == "霍夫直线检测")
             {
                 curentOpera = OperaEnum.HoughLines;
-                HoughLinesFrm blackHatFrm = new HoughLinesFrm(this);
-                blackHatFrm.Show();
-                this.Enabled = false;
-
+                changeParaControl(new HoughLinesUserC(), e);
             }
 
 
@@ -490,6 +482,124 @@ namespace CountPipe
                     throw (ex);
                 }
             }
+            if (curentOpera == OperaEnum.HoughLines)
+            {
+                try
+                {
+
+                    HoughLinesUserC guaseblurUserC = (HoughLinesUserC)parametersControl1;
+                    double rho = 0;
+
+                    double.TryParse(guaseblurUserC.getRho(), out rho);
+
+                    double theta = 1;
+
+                    double.TryParse(guaseblurUserC.getTheta(), out theta);
+                    int threshold = 1;
+
+                    int.TryParse(guaseblurUserC.getThreshold(), out threshold);
+
+                    double minLineLength = 1;
+
+                    double.TryParse(guaseblurUserC.getMinLineLength(), out minLineLength);
+
+                    double maxLineGap = 10;
+
+                    double.TryParse(guaseblurUserC.getMinLineLength(), out maxLineGap);
+
+                    Mat gray = new Mat();
+                    Cv2.CvtColor(rawImg, gray, ColorConversionCodes.BGR2GRAY);
+
+                    Mat stElem = Cv2.GetStructuringElement(MorphShapes.Rect, new
+               OpenCvSharp.Size(7, 7));
+                    Cv2.MorphologyEx(gray, gray, MorphTypes.Open, stElem, new OpenCvSharp.Point(-1, -1), 1);//来三次次开操作把无关点滤掉
+                    Mat canny = new Mat();
+                    Cv2.Threshold(gray, canny, 100, 150, ThresholdTypes.Binary);//二值化
+                    Cv2.Canny(canny, canny, 60, 200, 3, false);
+
+                    Mat huofuLineImg;
+                    LineSegmentPoint[] linePiont = pictrueHelper.HuofuLine(canny, rho, theta, threshold, out huofuLineImg, minLineLength, maxLineGap);
+
+                    Scalar color = new Scalar(guaseblurUserC.getColor().R, guaseblurUserC.getColor().G, guaseblurUserC.getColor().B);
+                    for (int i = 0; i < linePiont.Count(); i++)
+                    {
+                        OpenCvSharp.Point p1 = linePiont[i].P1;
+                        OpenCvSharp.Point p2 = linePiont[i].P2;
+                        Cv2.Line(huofuLineImg, p1, p2, color, 1, LineTypes.Link8);
+                    }
+
+                    pictrueHelper.showPic(huofuLineImg);
+
+
+                }
+                catch (Exception ex)
+                {
+                    log.Error("HoughLines fail " + ex.Message);
+                    throw ex;
+                }
+            }
+
+            if (curentOpera == OperaEnum.MedianBlur)
+            {
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        CloseUserC closeC = (CloseUserC)parametersControl1;
+                        int size = 0;
+
+                        int.TryParse(closeC.getSize(), out size);
+
+                        if (size % 2 == 0 || size == 1)
+                        {
+                            MessageBox.Show("请输入大于1的奇数");
+                            return;
+                        }
+                        if (size == 0)
+                        {
+                            size = 5;
+                        }
+
+                        Mat blurImg;
+                        pictrueHelper.MedianBlurImg(rawImg, size, out blurImg);
+                        pictrueHelper.showPic(blurImg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("gray fail " + ex.Message);
+
+                }
+
+            }
+
+            if (curentOpera == OperaEnum.NormalizedBlur)
+            {
+                try
+                {
+                    if (rawImg != null)
+                    {
+                        NormalizedBlurUserC normalizedBlurUser = (NormalizedBlurUserC)parametersControl1;
+                        int width = 0;
+                        int.TryParse(normalizedBlurUser.getWidth(), out width);
+                        int height;
+                        int.TryParse(normalizedBlurUser.getHeight(), out height);
+
+                        Mat blurImg;
+                        pictrueHelper.BlurImg(rawImg, width, height, -1, -1, out blurImg);
+                        pictrueHelper.showPic(blurImg);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("BlurImg fail " + ex.Message);
+                    MessageBox.Show(ex.Message);
+
+                }
+
+            }
+
         }
 
         /// <summary>

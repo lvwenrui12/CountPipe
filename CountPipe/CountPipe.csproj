@@ -105,11 +105,17 @@
     <Compile Include="GuaseblurUserC.Designer.cs">
       <DependentUpon>GuaseblurUserC.cs</DependentUpon>
     </Compile>
-    <Compile Include="HoughLinesFrm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="HoughLinesUserC.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HoughLinesFrm.Designer.cs">
-      <DependentUpon>HoughLinesFrm.cs</DependentUpon>
+    <Compile Include="HoughLinesUserC.Designer.cs">
+      <DependentUpon>HoughLinesUserC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NormalizedBlurUserC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NormalizedBlurUserC.Designer.cs">
+      <DependentUpon>NormalizedBlurUserC.cs</DependentUpon>
     </Compile>
     <Compile Include="OperaEnum.cs" />
     <Compile Include="ParametersControl.cs">
@@ -142,18 +148,6 @@
     <Compile Include="DilateFrm.Designer.cs">
       <DependentUpon>DilateFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NormalizedBlurFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NormalizedBlurFrm.Designer.cs">
-      <DependentUpon>NormalizedBlurFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MedianBlurFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MedianBlurFrm.Designer.cs">
-      <DependentUpon>MedianBlurFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="PictrueHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,8 +166,11 @@
     <EmbeddedResource Include="GuaseblurUserC.resx">
       <DependentUpon>GuaseblurUserC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HoughLinesFrm.resx">
-      <DependentUpon>HoughLinesFrm.cs</DependentUpon>
+    <EmbeddedResource Include="HoughLinesUserC.resx">
+      <DependentUpon>HoughLinesUserC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NormalizedBlurUserC.resx">
+      <DependentUpon>NormalizedBlurUserC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ParametersControl.resx">
       <DependentUpon>ParametersControl.cs</DependentUpon>
@@ -189,12 +186,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DilateFrm.resx">
       <DependentUpon>DilateFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NormalizedBlurFrm.resx">
-      <DependentUpon>NormalizedBlurFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MedianBlurFrm.resx">
-      <DependentUpon>MedianBlurFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
