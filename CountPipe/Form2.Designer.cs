@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("灰度");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("高斯模糊");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("中值模糊");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("高斯双边滤波");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("归一化滤波");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("滤波", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("腐蚀");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("膨胀");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("开");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("闭");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("形态学梯度");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("顶帽");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("黑帽");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Canny");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("霍夫直线检测");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("霍夫圆检测");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("霍夫", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("灰度");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("高斯模糊");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("中值模糊");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("高斯双边滤波");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("归一化滤波");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("滤波", new System.Windows.Forms.TreeNode[] {
+            treeNode21,
+            treeNode22,
+            treeNode23,
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("腐蚀");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("膨胀");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("开");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("闭");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("形态学梯度");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("顶帽");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("黑帽");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("形态", new System.Windows.Forms.TreeNode[] {
+            treeNode26,
+            treeNode27,
+            treeNode28,
+            treeNode29,
+            treeNode30,
+            treeNode31,
+            treeNode32});
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Canny");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("边缘检测", new System.Windows.Forms.TreeNode[] {
+            treeNode34});
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("霍夫直线检测");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("霍夫圆检测");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("霍夫", new System.Windows.Forms.TreeNode[] {
+            treeNode36,
+            treeNode37});
             this.pictBox = new System.Windows.Forms.PictureBox();
             this.btnCount = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -76,8 +76,10 @@
             this.dataSetOperatorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxPara = new System.Windows.Forms.GroupBox();
-            this.btnOpera = new System.Windows.Forms.Button();
             this.parametersControl1 = new CountPipe.ParametersControl();
+            this.btnOpera = new System.Windows.Forms.Button();
+            this.radioContinue = new System.Windows.Forms.RadioButton();
+            this.btnRollBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRaw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable1BindingSource1)).BeginInit();
@@ -148,50 +150,50 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 43);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "灰度";
-            treeNode2.Name = "节点2";
-            treeNode2.Text = "高斯模糊";
-            treeNode3.Name = "节点4";
-            treeNode3.Text = "中值模糊";
-            treeNode4.Name = "节点0";
-            treeNode4.Text = "高斯双边滤波";
-            treeNode5.Name = "节点1";
-            treeNode5.Text = "归一化滤波";
-            treeNode6.Name = "节点1";
-            treeNode6.Text = "滤波";
-            treeNode7.Name = "节点5";
-            treeNode7.Text = "腐蚀";
-            treeNode8.Name = "节点6";
-            treeNode8.Text = "膨胀";
-            treeNode9.Name = "节点7";
-            treeNode9.Text = "开";
-            treeNode10.Name = "节点8";
-            treeNode10.Text = "闭";
-            treeNode11.Name = "节点2";
-            treeNode11.Text = "形态学梯度";
-            treeNode12.Name = "节点3";
-            treeNode12.Text = "顶帽";
-            treeNode13.Name = "节点4";
-            treeNode13.Text = "黑帽";
-            treeNode14.Name = "节点3";
-            treeNode14.Text = "形态";
-            treeNode15.Name = "节点10";
-            treeNode15.Text = "Canny";
-            treeNode16.Name = "节点9";
-            treeNode16.Text = "边缘检测";
-            treeNode17.Name = "节点1";
-            treeNode17.Text = "霍夫直线检测";
-            treeNode18.Name = "节点2";
-            treeNode18.Text = "霍夫圆检测";
-            treeNode19.Name = "节点0";
-            treeNode19.Text = "霍夫";
+            treeNode20.Name = "节点0";
+            treeNode20.Text = "灰度";
+            treeNode21.Name = "节点2";
+            treeNode21.Text = "高斯模糊";
+            treeNode22.Name = "节点4";
+            treeNode22.Text = "中值模糊";
+            treeNode23.Name = "节点0";
+            treeNode23.Text = "高斯双边滤波";
+            treeNode24.Name = "节点1";
+            treeNode24.Text = "归一化滤波";
+            treeNode25.Name = "节点1";
+            treeNode25.Text = "滤波";
+            treeNode26.Name = "节点5";
+            treeNode26.Text = "腐蚀";
+            treeNode27.Name = "节点6";
+            treeNode27.Text = "膨胀";
+            treeNode28.Name = "节点7";
+            treeNode28.Text = "开";
+            treeNode29.Name = "节点8";
+            treeNode29.Text = "闭";
+            treeNode30.Name = "节点2";
+            treeNode30.Text = "形态学梯度";
+            treeNode31.Name = "节点3";
+            treeNode31.Text = "顶帽";
+            treeNode32.Name = "节点4";
+            treeNode32.Text = "黑帽";
+            treeNode33.Name = "节点3";
+            treeNode33.Text = "形态";
+            treeNode34.Name = "节点10";
+            treeNode34.Text = "Canny";
+            treeNode35.Name = "节点9";
+            treeNode35.Text = "边缘检测";
+            treeNode36.Name = "节点1";
+            treeNode36.Text = "霍夫直线检测";
+            treeNode37.Name = "节点2";
+            treeNode37.Text = "霍夫圆检测";
+            treeNode38.Name = "节点0";
+            treeNode38.Text = "霍夫";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode6,
-            treeNode14,
-            treeNode16,
-            treeNode19});
+            treeNode20,
+            treeNode25,
+            treeNode33,
+            treeNode35,
+            treeNode38});
             this.treeView1.Size = new System.Drawing.Size(126, 506);
             this.treeView1.TabIndex = 21;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -241,6 +243,13 @@
             this.groupBoxPara.TabStop = false;
             this.groupBoxPara.Text = "参数设置";
             // 
+            // parametersControl1
+            // 
+            this.parametersControl1.Location = new System.Drawing.Point(17, 17);
+            this.parametersControl1.Name = "parametersControl1";
+            this.parametersControl1.Size = new System.Drawing.Size(376, 203);
+            this.parametersControl1.TabIndex = 0;
+            // 
             // btnOpera
             // 
             this.btnOpera.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -253,18 +262,35 @@
             this.btnOpera.UseVisualStyleBackColor = true;
             this.btnOpera.Click += new System.EventHandler(this.btnOpera_Click);
             // 
-            // parametersControl1
+            // radioContinue
             // 
-            this.parametersControl1.Location = new System.Drawing.Point(17, 17);
-            this.parametersControl1.Name = "parametersControl1";
-            this.parametersControl1.Size = new System.Drawing.Size(376, 203);
-            this.parametersControl1.TabIndex = 0;
+            this.radioContinue.AutoSize = true;
+            this.radioContinue.Location = new System.Drawing.Point(813, 406);
+            this.radioContinue.Name = "radioContinue";
+            this.radioContinue.Size = new System.Drawing.Size(71, 16);
+            this.radioContinue.TabIndex = 26;
+            this.radioContinue.TabStop = true;
+            this.radioContinue.Text = "连续处理";
+            this.radioContinue.UseVisualStyleBackColor = true;
+            this.radioContinue.CheckedChanged += new System.EventHandler(this.radioContinue_CheckedChanged);
+            // 
+            // btnRollBack
+            // 
+            this.btnRollBack.Location = new System.Drawing.Point(809, 440);
+            this.btnRollBack.Name = "btnRollBack";
+            this.btnRollBack.Size = new System.Drawing.Size(75, 23);
+            this.btnRollBack.TabIndex = 27;
+            this.btnRollBack.Text = "回退";
+            this.btnRollBack.UseVisualStyleBackColor = true;
+            this.btnRollBack.Click += new System.EventHandler(this.btnRollBack_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1219, 661);
+            this.Controls.Add(this.btnRollBack);
+            this.Controls.Add(this.radioContinue);
             this.Controls.Add(this.btnOpera);
             this.Controls.Add(this.groupBoxPara);
             this.Controls.Add(this.label7);
@@ -310,5 +336,7 @@
         private System.Windows.Forms.GroupBox groupBoxPara;
         private ParametersControl parametersControl1;
         private System.Windows.Forms.Button btnOpera;
+        private System.Windows.Forms.RadioButton radioContinue;
+        private System.Windows.Forms.Button btnRollBack;
     }
 }

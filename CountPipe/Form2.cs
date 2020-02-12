@@ -33,14 +33,11 @@ namespace CountPipe
 
         private OperaEnum curentOpera;
 
-
-
+        Stack<Mat> resultStack   = new Stack<Mat>();
         public Form2()
         {
             InitializeComponent();
-
-
-
+            
             pictrueHelper = new PictrueHelper(this.pictBox);
 
             paramPoint = this.parametersControl1.Location;
@@ -435,6 +432,13 @@ namespace CountPipe
                         }
                         Mat grayImg;
                         pictrueHelper.Tobinimg_inv(rawImg, dvalue, out grayImg);
+
+                        if (this.radioContinue.Checked)
+                        {
+                            this.resultStack.Push(grayImg);
+
+                        }
+
                         pictrueHelper.showPic(grayImg);
 
 
@@ -635,6 +639,18 @@ namespace CountPipe
                 MessageBox.Show(ex.Message);
 
             }
+        }
+
+        private void btnRollBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioContinue_CheckedChanged(object sender, EventArgs e)
+        {
+            this.btnRollBack.Enabled = this.radioContinue.Checked;
+            this.resultStack.Clear();
+        
         }
     }
 
