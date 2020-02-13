@@ -18,11 +18,7 @@ namespace CountPipe
         public static readonly log4net.ILog log = log4net.LogManager.GetLogger("Logging"); //Logging 名
                                                                                            //原始
         public Mat rawImg;
-        //灰度后结果
-        public Mat grayImg;
-        //滤波后结果
-        public Mat blurImg;
-        //边缘检测
+     
         public Mat edgeImg;
 
         public PictrueHelper pictrueHelper;
@@ -33,11 +29,15 @@ namespace CountPipe
 
         private OperaEnum curentOpera;
 
-        Stack<Mat> resultStack   = new Stack<Mat>();
+        Stack<Mat> resultStack = new Stack<Mat>();
+
+        Boolean isContinue = false;
+
+        private Mat currentMat;
         public Form2()
         {
             InitializeComponent();
-            
+
             pictrueHelper = new PictrueHelper(this.pictBox);
 
             paramPoint = this.parametersControl1.Location;
@@ -57,6 +57,7 @@ namespace CountPipe
 
                     Mat img = Cv2.ImRead(filename);
                     rawImg = img.Clone();
+                    currentMat = img;
                     pictrueHelper.showPic(img);
 
                 }
@@ -456,7 +457,7 @@ namespace CountPipe
             {
                 try
                 {
-                    if (rawImg != null)
+                    if (currentMat != null)
                     {
                         GuaseblurUserC guaseblurUserC = (GuaseblurUserC)parametersControl1;
                         int size = 0;
@@ -476,6 +477,7 @@ namespace CountPipe
                         }
                         Mat guaseImg;
                         pictrueHelper.GuaseBlurImg(rawImg, size, sigmaX, sigmaY, out guaseImg);
+                        setCurrent(guaseImg);
                         pictrueHelper.showPic(guaseImg);
 
                     }
@@ -531,7 +533,7 @@ namespace CountPipe
                         OpenCvSharp.Point p2 = linePiont[i].P2;
                         Cv2.Line(huofuLineImg, p1, p2, color, 1, LineTypes.Link8);
                     }
-
+                    setCurrent(huofuLineImg);
                     pictrueHelper.showPic(huofuLineImg);
 
 
@@ -566,6 +568,7 @@ namespace CountPipe
 
                         Mat blurImg;
                         pictrueHelper.MedianBlurImg(rawImg, size, out blurImg);
+                        setCurrent(blurImg);
                         pictrueHelper.showPic(blurImg);
                     }
                 }
@@ -581,7 +584,7 @@ namespace CountPipe
             {
                 try
                 {
-                    if (rawImg != null)
+                    if (currentMat != null)
                     {
                         NormalizedBlurUserC normalizedBlurUser = (NormalizedBlurUserC)parametersControl1;
                         int width = 0;
@@ -591,6 +594,7 @@ namespace CountPipe
 
                         Mat blurImg;
                         pictrueHelper.BlurImg(rawImg, width, height, -1, -1, out blurImg);
+                        setCurrent(blurImg);
                         pictrueHelper.showPic(blurImg);
 
                     }
@@ -615,7 +619,7 @@ namespace CountPipe
         {
             try
             {
-                if (rawImg != null)
+                if (currentMat != null)
                 {
                     CloseUserC closeC = (CloseUserC)parametersControl1;
 
@@ -630,6 +634,9 @@ namespace CountPipe
                     InputArray element = Cv2.GetStructuringElement(MorphShapes.Rect, new OpenCvSharp.Size(size, size), new OpenCvSharp.Point(-1, -1));
                     Mat dilateImg;
                     pictrueHelper.MorphologyEx(rawImg, element, morphTypes, out dilateImg);
+
+                    setCurrent(dilateImg);
+
                     pictrueHelper.showPic(dilateImg);
                 }
             }
@@ -641,16 +648,48 @@ namespace CountPipe
             }
         }
 
+        private void setCurrent(Mat result)
+        {
+            if (isContinue)
+            {
+                resultStack.Push(result);
+                currentMat = result;
+            }
+            else
+            {
+                currentMat = rawImg;
+            }
+        }
+
         private void btnRollBack_Click(object sender, EventArgs e)
         {
+            if (resultStack.Count > 0)
+            {
+                Mat mat = resultStack.Pop();
+                pictrueHelper.showPic(mat);
+            }
+            else
+            {
+                this.btnRollBack.Enabled = false;
 
+            }
         }
 
         private void radioContinue_CheckedChanged(object sender, EventArgs e)
         {
             this.btnRollBack.Enabled = this.radioContinue.Checked;
             this.resultStack.Clear();
-        
+            isContinue = this.radioContinue.Checked;
+
+        }
+
+        private void putToStack(Mat mat)
+        {
+            if (radioContinue.Checked)
+            {
+                resultStack.Push(mat);
+                btnRollBack.Enabled = true;
+            }
         }
     }
 
